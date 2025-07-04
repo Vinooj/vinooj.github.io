@@ -5,76 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Machine Learning Resources Hub</title>
     <style>
+        /* Global Reset */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        /* Body Styling - White Theme */
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #4285f4 0%, #1a73e8 100%);
+            background: #FFFFFF; /* Solid white background */
             min-height: 100vh;
             overflow-x: hidden;
         }
 
+        /* Main Container */
         .container {
-            max-width: 1200px;
+            max-width: 1200px; /* Keep max-width for overall layout */
             margin: 0 auto;
             padding: 20px;
         }
 
+        /* Header Styling */
         .header {
             text-align: center;
-            padding: 60px 0;
-            color: white;
-            margin-bottom: 40px;
+            padding: 40px 0; /* Reduced padding */
+            color: #1a73e8; /* Darker blue text for contrast on white */
+            margin-bottom: 30px; /* Reduced margin */
         }
 
         .header h1 {
-            font-size: 3.5em;
-            margin-bottom: 20px;
+            font-size: 2.8em; /* Slightly smaller for white theme */
+            margin-bottom: 15px;
             font-weight: 700;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-            animation: fadeInUp 1s ease-out;
+            text-shadow: none; /* Remove text shadow for cleaner look */
+            animation: none; /* Remove animation for simplicity, can be added back if desired */
         }
 
         .header p {
-            font-size: 1.4em;
+            font-size: 1.2em; /* Slightly smaller */
             opacity: 0.9;
             max-width: 600px;
             margin: 0 auto;
-            animation: fadeInUp 1s ease-out 0.2s both;
+            animation: none; /* Remove animation */
+            color: #5f6368; /* Darker grey for body text */
         }
 
+        /* Stats Section */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px; /* Reduced gap */
+            margin: 30px 0; /* Reduced margin */
+            flex-wrap: wrap;
+            color: #1a73e8; /* Blue for stats on white background */
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2em; /* Smaller stat numbers */
+            font-weight: 700;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 1em;
+            opacity: 0.9;
+        }
+
+        /* Resources Grid - Smaller Cards, Three in a Row */
         .resources-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
+            grid-template-columns: repeat(3, 1fr); /* Force 3 columns */
+            gap: 20px; /* Reduced gap between cards */
+            margin-bottom: 40px; /* Reduced margin */
         }
 
         .resource-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px;
+            background: #FFFFFF; /* Solid white background */
+            backdrop-filter: none; /* No blur needed with solid background */
+            border-radius: 15px; /* Slightly smaller border-radius */
+            padding: 25px; /* Much smaller padding */
             text-align: center;
-            transition: all 0.4s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease; /* Faster transition */
+            border: 1px solid #e0e0e0; /* Lighter border */
             position: relative;
             overflow: hidden;
-            animation: fadeInUp 1s ease-out 0.4s both;
-        }
-
-        .resource-card:nth-child(2) {
-            animation-delay: 0.6s;
-        }
-
-        .resource-card:nth-child(3) {
-            animation-delay: 0.8s;
+            animation: none; /* Remove animation */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); /* Softer shadow */
         }
 
         .resource-card::before {
@@ -84,8 +109,8 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(66, 133, 244, 0.1), transparent);
-            transition: left 0.6s ease;
+            background: linear-gradient(90deg, transparent, rgba(66, 133, 244, 0.05), transparent); /* Lighter hover effect */
+            transition: left 0.4s ease; /* Faster transition */
         }
 
         .resource-card:hover::before {
@@ -93,65 +118,44 @@
         }
 
         .resource-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-            border-color: #4285f4;
+            transform: translateY(-5px); /* Less pronounced lift */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Slightly stronger shadow on hover */
+            border-color: #1a73e8; /* Blue border on hover */
         }
 
         .resource-icon {
-            font-size: 4em;
-            margin-bottom: 20px;
+            font-size: 3em; /* Smaller icon size */
+            margin-bottom: 15px;
             display: block;
-            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.08)); /* Lighter shadow */
         }
 
         .resource-card h2 {
-            font-size: 1.8em;
+            font-size: 1.4em; /* Smaller heading */
             color: #1a73e8;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             font-weight: 600;
         }
 
         .resource-card p {
             color: #5f6368;
-            margin-bottom: 25px;
-            line-height: 1.6;
-        }
-
-        .resource-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            background: linear-gradient(135deg, #4285f4 0%, #1a73e8 100%);
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3);
-        }
-
-        .resource-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(66, 133, 244, 0.4);
-            background: linear-gradient(135deg, #1a73e8 0%, #4285f4 100%);
-        }
-
-        .resource-link:active {
-            transform: translateY(0);
+            margin-bottom: 20px; /* Reduced margin */
+            line-height: 1.5;
+            font-size: 0.9em; /* Smaller paragraph text */
         }
 
         .features-list {
             list-style: none;
-            margin: 20px 0;
+            margin: 15px 0; /* Reduced margin */
+            text-align: left; /* Align list items to the left */
         }
 
         .features-list li {
-            padding: 5px 0;
+            padding: 3px 0;
             color: #5f6368;
             position: relative;
             padding-left: 20px;
+            font-size: 0.85em; /* Smaller list item text */
         }
 
         .features-list li::before {
@@ -162,44 +166,45 @@
             font-weight: bold;
         }
 
+        .resource-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 20px; /* Smaller padding */
+            background: linear-gradient(135deg, #1E90FF 0%, #4285f4 100%); /* Brighter blue gradient */
+            color: white;
+            text-decoration: none;
+            border-radius: 20px; /* Smaller border-radius */
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 8px rgba(30, 144, 255, 0.3); /* Softer shadow */
+        }
+
+        .resource-link:hover {
+            transform: translateY(-1px); /* Less pronounced lift */
+            box-shadow: 0 6px 15px rgba(30, 144, 255, 0.4);
+            background: linear-gradient(135deg, #4285f4 0%, #1E90FF 100%); /* Reverse gradient on hover */
+        }
+
+        .resource-link:active {
+            transform: translateY(0);
+        }
+
+        /* Footer Styling */
         .footer {
             text-align: center;
-            padding: 40px 0;
-            color: white;
-            opacity: 0.8;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 40px;
+            padding: 30px 0; /* Reduced padding */
+            color: #5f6368; /* Darker grey for footer text */
+            opacity: 0.9;
+            border-top: 1px solid #e0e0e0; /* Lighter border */
+            margin-top: 30px;
         }
 
         .footer p {
-            font-size: 1.1em;
+            font-size: 0.95em;
         }
 
-        .stats {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin: 40px 0;
-            flex-wrap: wrap;
-        }
-
-        .stat-item {
-            text-align: center;
-            color: white;
-        }
-
-        .stat-number {
-            font-size: 2.5em;
-            font-weight: 700;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .stat-label {
-            font-size: 1.1em;
-            opacity: 0.9;
-        }
-
+        /* Animations (kept for potential re-use, but removed from elements) */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -213,11 +218,28 @@
 
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-5px); } /* Reduced float distance */
         }
 
         .floating {
-            animation: float 3s ease-in-out infinite;
+            animation: float 2.5s ease-in-out infinite; /* Faster float */
+        }
+
+        .pulse {
+            animation: pulse 1.5s infinite; /* Faster pulse */
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); } /* Reduced pulse scale */
+            100% { transform: scale(1); }
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 1024px) {
+            .resources-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Allow wrapping if screen is too small for 3 */
+            }
         }
 
         @media (max-width: 768px) {
@@ -226,39 +248,29 @@
             }
             
             .header h1 {
-                font-size: 2.5em;
+                font-size: 2em;
             }
             
             .header p {
-                font-size: 1.1em;
+                font-size: 1em;
             }
             
             .resources-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr; /* Stack vertically on small screens */
                 gap: 20px;
             }
             
             .resource-card {
-                padding: 30px 20px;
+                padding: 20px 15px;
             }
             
             .stats {
-                gap: 20px;
+                gap: 15px;
             }
             
             .stat-number {
-                font-size: 2em;
+                font-size: 1.8em;
             }
-        }
-
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
         }
     </style>
 </head>
@@ -347,7 +359,7 @@
             
             cards.forEach(card => {
                 card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                    this.style.transform = 'translateY(-5px) scale(1.01)'; /* Adjusted scale */
                 });
                 
                 card.addEventListener('mouseleave', function() {
