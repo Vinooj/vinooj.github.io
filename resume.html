@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online CV</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #4A90E2;
+      --primary-color-dark: #3A7BC8;
+      --text-color: #4a4a4a;
+      --text-color-light: #9b9b9b;
+      --background-color: #f5f5f5;
+      --white-color: #ffffff;
+      --border-color: #d1d5db;
+      --link-color: #4A90E2;
+      --shadow-color: rgba(0, 0, 0, 0.08);
+      /* Carousel specific dimensions */
+      --card-height: 180px;
+    }
+
+    body {
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      font-size: 15px;
+      font-weight: 400;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      background-color: var(--white-color);
+      box-shadow: 0 4px 12px var(--shadow-color);
+      overflow: hidden;
+    }
+
+    @media (min-width: 992px) {
+      .container {
+        grid-template-columns: 280px 1fr; 
+      }
+    }
+
+    .sidebar {
+      background-color: var(--primary-color);
+      color: var(--white-color);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar-top {
+        background-color: var(--primary-color-dark);
+        padding: 40px 40px 30px 40px;
+        text-align: center;
+    }
+
+    .sidebar-bottom {
+        padding: 30px 40px 40px 40px;
+    }
+
+    .sidebar a {
+      color: var(--white-color);
+      text-decoration: none;
+    }
+
+    .profile-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto 20px;
+      border: 5px solid rgba(255,255,255,0.2);
+    }
+
+    .name {
+      font-size: 26px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 5px;
+    }
+
+    .title {
+      font-size: 17px;
+      font-weight: 300;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .sidebar-section {
+      margin-bottom: 30px;
+    }
+
+    .sidebar-title {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      border-bottom: 2px solid rgba(255,255,255,0.2);
+      padding-bottom: 5px;
+      text-transform: uppercase;
+    }
+
+    .contact-info {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-weight: 300;
+    }
+
+    .contact-info li {
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    .contact-info i {
+      width: 20px;
+      margin-right: 15px;
+      text-align: center;
+    }
+
+    .skills-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .skills-list li {
+      margin-bottom: 10px;
+      font-weight: 300;
+    }
+
+    .skill-bar {
+      background-color: rgba(255,255,255,0.2);
+      border-radius: 5px;
+      height: 8px;
+      overflow: hidden;
+      margin-top: 5px;
+    }
+
+    .skill-level {
+      background-color: var(--white-color);
+      height: 100%;
+      border-radius: 5px;
+    }
+
+    .main-content {
+      padding: 40px;
+    }
+
+    .introduction-text {
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 1.7;
+        color: var(--text-color);
+        margin-bottom: 40px;
+        padding-bottom: 25px;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .main-section {
+      margin-bottom: 40px;
+    }
+
+    .main-title {
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    .main-title i {
+      margin-right: 15px;
+      font-size: 26px;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 30px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 5px;
+      bottom: 5px;
+      width: 2px;
+      background-color: var(--border-color);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 30px;
+    }
+    
+    .timeline-item:last-child {
+        margin-bottom: 0;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -28px;
+      top: 5px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: var(--primary-color);
+      border: 2px solid var(--white-color);
+      box-shadow: 0 0 0 3px var(--border-color);
+    }
+    
+    .timeline-item.compact {
+        margin-bottom: 15px;
+    }
+
+    .item-title {
+      font-size: 17px;
+      font-weight: 500;
+      margin: 0;
+    }
+
+    .item-subtitle {
+      color: var(--text-color-light);
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+    
+    .item-subtitle .date {
+        font-weight: 500;
+        color: var(--primary-color);
+    }
+
+    .item-content {
+      font-size: 14px;
+      font-weight: 300;
+    }
+    
+    .item-content ul {
+        padding-left: 20px;
+        margin-top: 10px;
+    }
+    
+    .education-course {
+        font-weight: 500;
+        color: var(--text-color);
+    }
+    .education-institution {
+        color: var(--text-color-light);
+    }
+
+    /* --- Carousel Styles --- */
+    .carousel-wrapper {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .carousel-wrapper .main-title {
+        justify-content: center;
+    }
+
+    .carousel-container {
+      position: relative;
+      padding: 0 40px;
+      box-sizing: border-box;
+    }
+
+    .carousel-track-container {
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .carousel-track {
+      display: flex;
+      gap: 20px;
+      transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    .project-card {
+      width: calc((100% - 40px) / 3);
+      height: var(--card-height, 180px);
+      flex-shrink: 0;
+      box-sizing: border-box;
+      background-color: var(--white-color);
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 15px var(--shadow-color);
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      padding: 0;
+    }
+    
+    .project-card-header {
+      width: 100%;
+      padding: 12px 15px;
+      background-color: #f8f9fa;
+      border-bottom: 1px solid var(--border-color);
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .project-card-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--primary-color-dark);
+      margin: 0;
+      line-height: 1.3;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex-grow: 1;
+      text-align: left;
+    }
+    
+    .project-winner-badge {
+        position: relative;
+        font-size: 24px;
+        color: var(--primary-color);
+        width: 1em;
+        height: 1em;
+        line-height: 1;
+    }
+
+    .project-winner-badge::before {
+        content: '\f559'; /* Font Awesome 6 'award' icon */
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .project-winner-badge::after {
+        content: '1';
+        position: absolute;
+        top: 42%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: var(--white-color);
+        font-size: 0.45em;
+        font-weight: 900;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .project-card-body {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px;
+    }
+
+    .project-card-description {
+        font-size: 14px;
+        color: var(--text-color);
+        margin: 0;
+    }
+
+    @media (max-width: 991px) {
+      .project-card {
+        width: calc((100% - 20px) / 2);
+      }
+    }
+    
+    @media (max-width: 767px) {
+      .project-card {
+        width: 100%;
+      }
+    }
+    
+    .carousel-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: var(--white-color);
+      color: var(--primary-color);
+      border: 1px solid var(--primary-color);
+      cursor: pointer;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      z-index: 10;
+      transition: opacity 0.3s, box-shadow 0.3s;
+      box-shadow: 0 2px 8px var(--shadow-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+    
+    .carousel-button:hover {
+        background-color: #f8f8f8;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .carousel-button.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .carousel-button.prev {
+      left: 0;
+    }
+
+    .carousel-button.next {
+      right: 0;
+    }
+    
+    .footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #f0f0f0;
+        color: #777;
+        font-size: 13px;
+        margin-top: 40px;
+        border-top: 1px solid var(--border-color);
+    }
+    
+    .footer a {
+        color: var(--primary-color);
+        text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" id="resume-container">
+    <!-- Content will be loaded here -->
+    <div style="text-align: center; padding: 50px; font-size: 20px;">Loading Resume Data...</div>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Data for the resume is stored in YAML format for easy editing.
+      const yamlText = `
+personal:
+  name: "Vinoo Joseph Nedungadan"
+  title: "Senior Engineering Manager | Aspiring AI/ML Specialist"
+  photo: "https://placehold.co/160x160/4A90E2/FFFFFF?text=VN"
+  contact:
+    - icon: "fa-envelope"
+      text: "vinoo.joseph@gmail.com"
+      link: "mailto:vinoo.joseph@gmail.com"
+    - icon: "fa-phone"
+      text: "408 915 8672"
+      link: "tel:+14089158672"
+    - icon: "fa-map-marker-alt"
+      text: "San Jose, CA"
+      link: "#"
+
+introduction: "A seasoned engineering leader with over 10 years of experience architecting and delivering robust enterprise SaaS solutions. Now transitioning into the field of Artificial Intelligence, complementing a strong software engineering foundation with intensive, recent training in Machine Learning, Deep Learning, and Generative AI from top institutions like Stanford Online. Eager to apply a unique blend of full-stack development expertise and advanced data science skills to drive the next generation of intelligent applications."
+
+career_goal: "Architecting and developing solutions for complex, data-driven business problems by applying a deep understanding of enterprise systems and modern AI techniques."
+
+skills:
+  - name: "Machine Learning & Gen AI"
+    level: "85%"
+  - name: "SaaS Application Development"
+    level: "95%"
+  - name: "Cloud Platforms (AWS, GCP)"
+    level: "90%"
+  - name: "Engineering Management"
+    level: "95%"
+  - name: "Microservices Architecture"
+    level: "85%"
+  - name: "DevOps & ARA Solutions"
+    level: "88%"
+  - name: "Statistical Learning (Python)"
+    level: "80%"
+  - name: "CRM & Salesforce Integration"
+    level: "85%"
+
+languages:
+  - name: "English"
+    level: "100%"
+
+experience:
+  - title: "General Engineer"
+    company: "IRS, Department of Treasury"
+    period: "2024 - Present"
+    description: "Auditing complex software engineering projects to validate R&D tax credit claims as per IRC § 41. Involves deep analysis of financial data, technical designs, and project documentation to differentiate research from standard development."
+    responsibilities:
+      - "Conduct extensive data analysis on taxpayer datasets to validate research credit claims."
+      - "Prepare detailed reports with persuasive arguments to support audit findings."
+      - "Coordinate with internal teams, including practice networks, council, and specialists."
+      - "Author rebuttal letters and represent findings at pre-appeals conferences."
+  - title: "Senior Engineering Manager - Personalization"
+    company: "Apree Health (formerly Castlight)"
+    period: "2019 - 2024"
+    description: "Led teams responsible for the personalization and recommendation engine, async messaging, and employee wellness challenges within the Castlight Health cloud-native SaaS application on GCP."
+    responsibilities:
+      - "Drove a 2.5% increase in Gap in Care (GIC) closures by enhancing the ML-based personalization engine."
+      - "Led the design and delivery of an async messaging feature between users and Care Guides via Salesforce Service Cloud."
+      - "Managed the creation of the Claims360 view in Salesforce, boosting Care Guide efficiency by 25%."
+      - "Oversaw the migration of the Truven ML analytics engine from a data center to Google Cloud (GCP)."
+      - "Reduced cloud infrastructure spending by 50% through the successful migration of microservices to GCP."
+  - title: "Lead Engineering Manager - Marketplace"
+    company: "Guidewire Software"
+    period: "2017 - 2019"
+    description: "Managed a software development team in Krakow, Poland, responsible for the DevConnect SDK, which enabled partners to build and integrate add-ons for the Guidewire Insurance Platform."
+    responsibilities:
+      - "Architected and designed the DevConnect SDK for third-party add-on development."
+      - "Worked closely with solution partners to bootstrap add-on development and integration."
+      - "Collected, analyzed, and prioritized customer feedback into an actionable product backlog."
+  - title: "Senior Functional Architect - Electric Deploy"
+    company: "Electric Cloud"
+    period: "2014 - 2017"
+    description: "Provided functional and architectural guidance for an industry-leading Application Release Automation (ARA) solution. Worked with development and UX to design and implement new features."
+    responsibilities:
+      - "Architected microservices and container deployment support for Amazon ECS and Google GCE."
+      - "Collaborated with product management to define and execute on features like Canary Releases and Rolling Updates."
+      - "Developed user stories, conducted storytimes, and delivered technical field training."
+  - title: "Senior Manager - R&D SaaS Technologies"
+    company: "Serena Software"
+    period: "2008 - 2013"
+    description: "Managed the team responsible for Serena's SaaS Business Mashup platform and the development of a business reporting framework."
+    responsibilities:
+      - "Managed platform rollout, patching, and maintenance on the Skytap cloud environment."
+      - "Led development of a graph (NoSQL) database-based Relationship Service Manager for a 360-degree view of ITSM processes."
+      - "Developed a CMDB solution for organizational asset discovery."
+      - "Created out-of-the-box reports for key IT Service Management (ITSM) metrics."
+
+education:
+  - degree: "MS, Computer Engineering"
+    institution: "Manhattan College, Riverdale, NY"
+    period: ""
+    details: ""
+
+continuing_education:
+  - course: "Supervised Machine Learning: Regression and Classification"
+    institution: "Stanford Online (Coursera) - by Andrew Ng"
+  - course: "Advanced Learning Algorithms"
+    institution: "Stanford Online (Coursera) - by Andrew Ng"
+  - course: "Unsupervised Learning, Recommenders, Reinforcement Learning"
+    institution: "Stanford Online (Coursera) - by Andrew Ng"
+  - course: "Statistical Learning with Python (Actively taking)"
+    institution: "Stanford Online - by Trevor Hastie & Robert Tibshirani"
+
+projects:
+  - name: "Care Guide Chat Efficiency"
+    winner: true
+  - name: "Container Deployment Automation"
+  - name: "Feature Flags Implementation"
+    winner: true
+  - name: "Real-time Data Analytics"
+  - name: "Mobile-First User Onboarding"
+    winner: true
+  - name: "AI-Powered Search Enhancements"
+      `;
+
+      try {
+        const data = jsyaml.load(yamlText);
+        renderResume(data);
+      } catch (error) {
+        console.error('Error parsing YAML data:', error);
+        document.getElementById('resume-container').innerHTML = '<div style="color: red; text-align: center; padding: 50px; font-size: 20px;">Error: Could not parse resume data.</div>';
+      }
+    });
+
+    function renderResume(data) {
+      const container = document.getElementById('resume-container');
+      
+      const sidebarHTML = `
+        <aside class="sidebar">
+          <div class="sidebar-top">
+            <img src="${data.personal.photo}" alt="Profile Picture" class="profile-img">
+            <h1 class="name">${data.personal.name}</h1>
+            <h2 class="title">${data.personal.title}</h2>
+          </div>
+          <div class="sidebar-bottom">
+            <div class="sidebar-section">
+              <h3 class="sidebar-title">Contact</h3>
+              <ul class="contact-info">
+                ${data.personal.contact.map(item => `
+                  <li><i class="fa-solid ${item.icon}"></i><a href="${item.link}" target="_blank">${item.text}</a></li>
+                `).join('')}
+              </ul>
+            </div>
+
+            <div class="sidebar-section">
+              <h3 class="sidebar-title">Skills</h3>
+              <ul class="skills-list">
+                ${data.skills.map(skill => `
+                  <li>
+                    <span>${skill.name}</span>
+                    <div class="skill-bar">
+                      <div class="skill-level" style="width: ${skill.level};"></div>
+                    </div>
+                  </li>
+                `).join('')}
+              </ul>
+            </div>
+            
+            <div class="sidebar-section">
+              <h3 class="sidebar-title">Languages</h3>
+              <ul class="skills-list">
+                ${data.languages.map(lang => `
+                  <li>
+                    <span>${lang.name}</span>
+                    <div class="skill-bar">
+                      <div class="skill-level" style="width: ${lang.level};"></div>
+                    </div>
+                  </li>
+                `).join('')}
+              </ul>
+            </div>
+          </div>
+        </aside>
+      `;
+
+      const mainContentHTML = `
+        <main class="main-content">
+          <div class="introduction-text">
+            <p>${data.introduction}</p>
+          </div>
+
+          <section class="main-section">
+            <h2 class="main-title"><i class="fa-solid fa-bullseye"></i>Career Goal</h2>
+            <div class="item-content">
+              <p>${data.career_goal}</p>
+            </div>
+          </section>
+
+          <section class="main-section">
+            <h2 class="main-title"><i class="fa-solid fa-briefcase"></i>Work Experience</h2>
+            <div class="timeline">
+              ${data.experience.map(job => `
+                <div class="timeline-item">
+                  <h3 class="item-title">${job.title}</h3>
+                  <p class="item-subtitle">${job.company} / <span class="date">${job.period}</span></p>
+                  <div class="item-content">
+                    <p>${job.description}</p>
+                    <ul>
+                        ${job.responsibilities.map(r => `<li>${r}</li>`).join('')}
+                    </ul>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </section>
+
+          <section class="main-section">
+            <h2 class="main-title"><i class="fa-solid fa-graduation-cap"></i>Education</h2>
+            <div class="timeline">
+              ${data.education.map(edu => `
+                <div class="timeline-item">
+                  <h3 class="item-title">${edu.degree}</h3>
+                  <p class="item-subtitle">${edu.institution} / <span class="date">${edu.period}</span></p>
+                  <div class="item-content">
+                    ${edu.details ? `<p>${edu.details}</p>` : ''}
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </section>
+
+          <section class="main-section">
+            <h2 class="main-title"><i class="fa-solid fa-book-open"></i>Continuing Education</h2>
+            <div class="timeline">
+              ${(data.continuing_education || []).map(edu => `
+                <div class="timeline-item compact">
+                  <div class="item-content">
+                     <span class="education-course">${edu.course}</span> - <span class="education-institution">${edu.institution}</span>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </section>
+
+          <section class="main-section carousel-wrapper">
+            <h2 class="main-title"><i class="fa-solid fa-lightbulb"></i>Hackathon Projects</h2>
+            <div class="carousel-container">
+                <div class="carousel-track-container">
+                    <div class="carousel-track">
+                        ${(data.projects || []).map(project => {
+                            const winnerBadge = project.winner 
+                                ? '<span class="project-winner-badge"></span>' 
+                                : '';
+
+                            return `
+                                <div class="project-card">
+                                    <div class="project-card-header">
+                                        <h4 class="project-card-title">${project.name}</h4>
+                                        ${winnerBadge}
+                                    </div>
+                                    <div class="project-card-body">
+                                        <p class="project-card-description">test description</p>
+                                    </div>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
+                <button class="carousel-button prev"><i class="fa-solid fa-chevron-left"></i></button>
+                <button class="carousel-button next"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+          </section>
+          
+          <footer class="footer">
+            <p>This resume was created based on a template by <a href="https://webjeda.com" target="_blank">WebJeda</a>.</p>
+          </footer>
+        </main>
+      `;
+
+      container.innerHTML = sidebarHTML + mainContentHTML;
+      
+      setupCarousel();
+    }
+
+    function setupCarousel() {
+      const carouselContainer = document.querySelector('.carousel-container');
+      if (!carouselContainer) return;
+
+      const track = carouselContainer.querySelector('.carousel-track');
+      const slides = Array.from(track.children);
+      const nextButton = carouselContainer.querySelector('.carousel-button.next');
+      const prevButton = carouselContainer.querySelector('.carousel-button.prev');
+      
+      if (slides.length === 0) return;
+
+      let currentIndex = 0;
+
+      const getVisibleSlides = () => {
+          if (window.innerWidth <= 767) return 1;
+          if (window.innerWidth <= 991) return 2;
+          return 3;
+      };
+
+      const updateCarousel = () => {
+          const visibleSlides = getVisibleSlides();
+          const slideWidth = slides.length > 0 ? slides[0].getBoundingClientRect().width : 0;
+          const gap = 20;
+          const offset = currentIndex * (slideWidth + gap);
+          track.style.transform = `translateX(-${offset}px)`;
+
+          if (slides.length > visibleSlides) {
+              prevButton.classList.toggle('hidden', currentIndex === 0);
+              nextButton.classList.toggle('hidden', currentIndex >= slides.length - visibleSlides);
+          } else {
+              prevButton.classList.add('hidden');
+              nextButton.classList.add('hidden');
+          }
+      };
+
+      nextButton.addEventListener('click', () => {
+          const visibleSlides = getVisibleSlides();
+          if (currentIndex < slides.length - visibleSlides) {
+              currentIndex++;
+              updateCarousel();
+          }
+      });
+
+      prevButton.addEventListener('click', () => {
+          if (currentIndex > 0) {
+              currentIndex--;
+              updateCarousel();
+          }
+      });
+      
+      window.addEventListener('resize', () => {
+          currentIndex = 0;
+          updateCarousel();
+      });
+
+      updateCarousel();
+    }
+
+  </script>
+</body>
+</html>
