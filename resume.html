@@ -39,29 +39,38 @@
     .container {
       max-width: 1200px;
       margin: 40px auto;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 0;
       background-color: var(--white-color);
       box-shadow: 0 4px 12px var(--shadow-color);
       overflow: hidden;
     }
-
+    
+    /* Assign grid areas to each major section */
+    .sidebar-personal { grid-area: personal; }
+    .main-content     { grid-area: main; }
+    .sidebar-skills   { grid-area: skills; }
+    
+    /* Desktop: Two-column grid layout using grid-template-areas */
     @media (min-width: 992px) {
       .container {
-        grid-template-columns: 280px 1fr; 
+        display: grid;
+        grid-template-columns: 1fr 300px; 
+        grid-template-areas:
+          "main personal"
+          "main skills";
+        grid-template-rows: auto 1fr;
       }
     }
 
     .sidebar {
       background-color: var(--primary-color);
       color: var(--white-color);
-      display: flex;
-      flex-direction: column;
+    }
+    
+    .sidebar-personal {
+        background-color: var(--primary-color-dark);
     }
 
     .sidebar-top {
-        background-color: var(--primary-color-dark);
         padding: 40px 40px 30px 40px;
         text-align: center;
     }
@@ -379,7 +388,15 @@
         margin: 0;
     }
 
+    /* Mobile & Tablet: Single column layout */
     @media (max-width: 991px) {
+      .container {
+        margin: 0;
+        box-shadow: none;
+      }
+      .main-content, .sidebar-top, .sidebar-bottom {
+        padding: 25px;
+      }
       .project-card {
         width: calc((100% - 20px) / 2);
       }
@@ -448,7 +465,6 @@
 <body>
 
   <div class="container" id="resume-container">
-    <!-- Content will be loaded here -->
     <div style="text-align: center; padding: 50px; font-size: 20px;">Loading Resume Data...</div>
   </div>
   
@@ -459,7 +475,7 @@
 personal:
   name: "Vinoo Joseph Nedungadan"
   title: "Senior Engineering Manager | Aspiring AI/ML Specialist"
-  photo: "https://placehold.co/160x160/4A90E2/FFFFFF?text=VN"
+  photo: "./img/vinoo-gibli.png"
   contact:
     - icon: "fa-envelope"
       text: "vinoo.joseph@gmail.com"
@@ -583,23 +599,24 @@ projects:
     function renderResume(data) {
       const container = document.getElementById('resume-container');
       
-      const sidebarHTML = `
-        <aside class="sidebar">
+      const personalSidebarHTML = `
+        <aside class="sidebar sidebar-personal">
           <div class="sidebar-top">
             <img src="${data.personal.photo}" alt="Profile Picture" class="profile-img">
             <h1 class="name">${data.personal.name}</h1>
             <h2 class="title">${data.personal.title}</h2>
-          </div>
-          <div class="sidebar-bottom">
-            <div class="sidebar-section">
-              <h3 class="sidebar-title">Contact</h3>
-              <ul class="contact-info">
+             <ul class="contact-info">
                 ${data.personal.contact.map(item => `
                   <li><i class="fa-solid ${item.icon}"></i><a href="${item.link}" target="_blank">${item.text}</a></li>
                 `).join('')}
               </ul>
-            </div>
+          </div>
+        </aside>
+      `;
 
+      const skillsSidebarHTML = `
+        <aside class="sidebar sidebar-skills">
+          <div class="sidebar-bottom">
             <div class="sidebar-section">
               <h3 class="sidebar-title">Skills</h3>
               <ul class="skills-list">
@@ -720,12 +737,13 @@ projects:
           </section>
           
           <footer class="footer">
-            <p>This resume was created based on a template by <a href="https://webjeda.com" target="_blank">WebJeda</a>.</p>
+            <p>Andrej Karpathy, "English is the hottest new programming language"</p>
           </footer>
         </main>
       `;
 
-      container.innerHTML = sidebarHTML + mainContentHTML;
+      // Render in the new responsive order
+      container.innerHTML = personalSidebarHTML + mainContentHTML + skillsSidebarHTML;
       
       setupCarousel();
     }
