@@ -487,7 +487,7 @@ personal:
       text: "San Jose, CA"
       link: "#"
 
-introduction: "A seasoned engineering leader with over 10 years of experience architecting and delivering robust enterprise SaaS solutions. Now transitioning into the field of Artificial Intelligence, complementing a strong software engineering foundation with intensive, recent training in Machine Learning, Deep Learning, and Generative AI from top institutions like Stanford Online. Eager to apply a unique blend of full-stack development expertise and advanced data science skills to drive the next generation of intelligent applications."
+introduction: "A seasoned engineering leader with over 10 years of experience architecting and delivering robust enterprise SaaS solutions. Now transitioning into the field of Artificial Intelligence, complementing a strong software engineering foundation with intensive, recent training in Machine Learning, Deep Learning, and Generative AI. Eager to apply a unique blend of full-stack development expertise and advanced data science skills to drive the next generation of intelligent applications."
 
 career_goal: "Architecting and developing solutions for complex, data-driven business problems by applying a deep understanding of enterprise systems and modern AI techniques."
 
@@ -526,13 +526,13 @@ experience:
   - title: "Senior Engineering Manager - Personalization"
     company: "Apree Health (formerly Castlight)"
     period: "2019 - 2024"
-    description: "Led teams responsible for the personalization and recommendation engine, async messaging, and employee wellness challenges within the Castlight Health cloud-native SaaS application on GCP."
+    description: "Led Machine Learning team responsible for the personalization and recommendation engine, async messaging, and employee wellness challenges within the Castlight Health cloud-native SaaS application on GCP."
     responsibilities:
-      - "Drove a 2.5% increase in Gap in Care (GIC) closures by enhancing the ML-based personalization engine."
-      - "Led the design and delivery of an async messaging feature between users and Care Guides via Salesforce Service Cloud."
-      - "Managed the creation of the Claims360 view in Salesforce, boosting Care Guide efficiency by 25%."
-      - "Oversaw the migration of the Truven ML analytics engine from a data center to Google Cloud (GCP)."
-      - "Reduced cloud infrastructure spending by 50% through the successful migration of microservices to GCP."
+      - "Improved healthcare program adoption using an ML-based recommendation engine. Built and implemented a personalized health recommendation engine, utilizing ML and user data within the wellbeing app, which led to a 5% increase in Gap in Care closures."
+      - "Enhanced user engagement by successfully delivering an asynchronous messaging feature that enabled two-way communication between users and healthcare professionals within the app. Adiditionally, managed the Challenges team to promote healthy habits through gamification."
+      - "Ensured efficient application delivery and infrastructure optimization by launching white-labeled health apps for major clients. streamlined cross-functional team communication and migrated key data and services to the cloud, which improved security, performance, and resulted in 50% cost savings."
+      - "Developed a prototype RAG application for Natural Language-to-SQL translation, enabling product managers to self-sufficiently build segments for 'Gap in Care' targeting."  
+      - "Empowered my team to adopt the best software engineering practices (SDLC), ensuring 24/7 business continuity."
   - title: "Lead Engineering Manager - Marketplace"
     company: "Guidewire Software"
     period: "2017 - 2019"
@@ -578,13 +578,14 @@ continuing_education:
 projects:
   - name: "Care Guide Chat Efficiency"
     winner: true
-  - name: "Container Deployment Automation"
-  - name: "Feature Flags Implementation"
+    description: "Won hackathon at Apree in 2021 for a solution to improve Careguide efficiency using ML"    
+  - name: "Template Based release Automation"
     winner: true
-  - name: "Real-time Data Analytics"
-  - name: "Mobile-First User Onboarding"
+    description: "This hackton project was focused on using Templates to support one click cloid deployments. @ElectrciCloud"
+  - name: "DSL editor"
     winner: true
-  - name: "AI-Powered Search Enhancements"
+    description: "This hackton project was focused on supporting inline DSL editor in the product with checkin/checkout ability. @ElectrciCloud"        
+
       `;
 
       try {
@@ -724,7 +725,7 @@ projects:
                                         ${winnerBadge}
                                     </div>
                                     <div class="project-card-body">
-                                        <p class="project-card-description">test description</p>
+                                        <p class="project-card-description">${project.description}</p>
                                     </div>
                                 </div>
                             `;
