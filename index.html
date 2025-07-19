@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-HN8H7G98C0"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -25,6 +24,7 @@
             --text-light: #e0e0e0;
             --text-medium: #a0a0c0;
             --card-bg: rgba(26, 32, 53, 0.7);
+            --border-color: rgba(255, 255, 255, 0.1);
         }
 
         * {
@@ -49,11 +49,11 @@
 
         .header {
             text-align: center;
-            padding: 4rem 0 2rem;
+            padding: 2.5rem 0 1.5rem;
         }
 
         .header h1 {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
             color: var(--accent-teal);
@@ -61,9 +61,9 @@
         }
 
         .header p {
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             color: var(--text-medium);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             font-weight: 300;
             animation: fadeInDown 1s ease-out 0.2s backwards;
         }
@@ -86,34 +86,10 @@
             color: var(--accent-teal);
             transform: scale(1.1);
         }
-
-        .summary-section {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 4rem;
-            padding: 2rem;
-            background: var(--light-navy);
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            animation: fadeInUp 1s ease-out 0.6s backwards;
-        }
-
-        .summary-section h2 {
-            font-size: 2.5rem;
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-        }
-
-        .summary-section p {
-            color: var(--text-medium);
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 2rem;
-        }
-
+        
         .resume-link {
             display: inline-block;
-            padding: 0.8rem 2rem;
+            padding: 0.7rem 1.8rem;
             background: var(--accent-teal);
             color: var(--dark-navy);
             text-decoration: none;
@@ -121,6 +97,7 @@
             font-weight: 600;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 4px 15px rgba(0, 245, 200, 0.2);
+            margin-bottom: 1.5rem;
         }
 
         .resume-link:hover {
@@ -128,186 +105,180 @@
             box-shadow: 0 8px 25px rgba(0, 245, 200, 0.3);
         }
 
-        .showcase-section {
-            margin-bottom: 4rem;
-            animation: fadeInUp 1s ease-out 0.8s backwards;
-        }
-        
         .section-title {
             text-align: center;
-            font-size: 2rem;
-            margin-bottom: 2rem;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
             color: var(--text-light);
         }
         
-        .showcase-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+        /* Showcase (Carousel) Section */
+        .showcase-section {
+            position: relative;
+            background-color: var(--light-navy);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem 0;
+            margin-bottom: 3rem;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.4);
+            animation: fadeInUp 1s ease-out 0.8s backwards;
         }
         
-        .showcase-item a {
-            display: block;
+        .showcase-section .section-title {
+            margin-bottom: 1rem;
+            padding: 0 1rem;
+        }
+
+        .carousel-container { width: 100%; overflow: hidden; }
+        .carousel-track { display: flex; width: fit-content; }
+        .showcase-section.scrolling .carousel-track { transition: transform 0.5s ease-in-out; }
+
+        .carousel-card {
+            flex-shrink: 0;
+            width: 180px;
+            margin: 0.75rem;
             border-radius: 12px;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .showcase-item a:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .showcase-item img {
-            display: block;
-            width: 100%;
-            height: auto;
-        }
-        
-        /* New Kaggle Section styles */
-        .kaggle-section {
-            margin-bottom: 4rem;
-        }
-
-        .kaggle-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-        }
-        
-        .kaggle-item {
             display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            
+            /* New card styling for emboss effect */
+            background: linear-gradient(145deg, #2a314d, #131729);
+            border: 2px solid;
+            border-color: #2e3654 #14182a #14182a #2e3654;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.5), 0 0 10px rgba(0,0,0,0.5);
+        }
+        
+        .carousel-card:hover { 
+            transform: translateY(-8px); 
+            box-shadow: inset 0 0 8px rgba(0, 245, 200, 0.2), 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .thumbnail-container { padding-top: 0.75rem; }
+        .carousel-card img { width: 120px; height: 80px; object-fit: cover; display: block; margin: 0 auto; border-radius: 8px; }
+        .card-content { padding: 0.75rem; text-align: center; }
+        .card-content h3 { font-size: 0.9rem; color: var(--text-light); margin-bottom: 0.25rem; }
+        .card-content p { font-size: 0.75rem; color: var(--text-medium); line-height: 1.4; }
+
+        .carousel-arrow {
+            display: none;
+            position: absolute;
+            top: 55%;
+            transform: translateY(-50%);
+            background-color: rgba(10, 15, 30, 0.8);
+            border: 1px solid var(--border-color);
+            color: var(--accent-teal);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
+            z-index: 10;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        
+        .showcase-section.scrolling .carousel-arrow { display: flex; }
+        .showcase-section.static .carousel-track { justify-content: center; width: 100%; }
+        .carousel-arrow:hover { background-color: var(--accent-teal); color: var(--dark-navy); transform: translateY(-50%) scale(1.1); }
+        #scroll-left { left: 15px; }
+        #scroll-right { right: 15px; }
+        
+        /* Kaggle Section */
+        .kaggle-section {
+            padding: 1.5rem;
             background: var(--light-navy);
-            padding: 1rem 1.5rem;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: background-color 0.3s ease;
+            border-radius: 16px;
+            margin-bottom: 3rem;
+            border: 1px solid var(--border-color);
         }
         
-        .kaggle-item:hover {
-            background-color: var(--card-bg);
-        }
+        .kaggle-section ul { list-style: none; padding-left: 0; }
+        .kaggle-section li { padding: 0.75rem 0; border-bottom: 1px solid var(--border-color); }
+        .kaggle-section li:last-child { border-bottom: none; }
 
-        .kaggle-item h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-
-        .kaggle-item p {
-            font-size: 0.9rem;
-            color: var(--text-medium);
+        .kaggle-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
         }
         
+        .kaggle-item-header h3 { font-size: 1.1rem; color: var(--text-light); font-weight: 600; }
+
         .kaggle-item-link {
             color: var(--accent-teal);
             font-weight: 600;
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             white-space: nowrap;
-            margin-left: 1rem;
-        }
-
-        .resources-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjusted minmax */
-            gap: 1.5rem; /* Adjusted gap */
-        }
-
-        .resource-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 1.5rem; /* Reduced padding */
-            text-align: left;
-            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .resource-card:hover {
-            transform: translateY(-8px); /* Adjusted hover transform */
-            border-color: rgba(0, 245, 200, 0.5);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--accent-teal);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
         }
         
-        /* New styles for positioning icon next to heading */
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem; /* Space between icon and title */
-            margin-bottom: 1rem;
-        }
+        .kaggle-item-link:hover { background: var(--accent-teal); color: var(--dark-navy); }
+        .kaggle-section p { font-size: 0.9rem; color: var(--text-medium); margin-top: 0.4rem; }
+        
+        /* Coursework Section & Table */
+        .coursework-section { margin-bottom: 3rem; }
+        .coursework-table-container { background: var(--light-navy); border: 1px solid var(--border-color); border-radius: 16px; padding: 1rem; }
+        .coursework-table { width: 100%; border-collapse: collapse; text-align: left; }
+        .coursework-table th, .coursework-table td { padding: 0.8rem 1rem; border-bottom: 1px solid var(--border-color); }
+        .coursework-table tr:last-child td { border-bottom: none; }
+        .coursework-table thead { background-color: rgba(0,0,0,0.1); }
+        .coursework-table th { color: var(--accent-teal); font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        .coursework-table td { font-size: 0.9rem; color: var(--text-medium); }
+        .coursework-table tbody tr:hover { background-color: rgba(0,0,0,0.15); }
+        .coursework-table td:nth-child(1) { color: var(--text-light); }
+        .credential-link { display: inline-block; text-decoration: none; color: var(--accent-teal); font-weight: 500; transition: color 0.3s ease; }
+        .credential-link:hover { text-decoration: underline; color: #fff; }
+        .credential-link img { max-width: 30px; border-radius: 4px; border: 1px solid var(--border-color); transition: transform 0.3s ease, box-shadow 0.3s ease; vertical-align: middle; }
+        .credential-link:hover img { transform: scale(1.05); box-shadow: 0 4px 15px rgba(0, 245, 200, 0.2); }
 
-        .resource-icon {
-            width: 30px; /* Reduced icon size */
-            height: 30px; /* Reduced icon size */
-            color: var(--accent-teal);
-            margin-bottom: 0; /* Removed bottom margin */
-        }
+        /* Modal Styles */
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.8); backdrop-filter: blur(5px); align-items: center; justify-content: center; }
+        .modal.active { display: flex; }
+        .modal-content { background-color: var(--light-navy); margin: auto; padding: 2rem; border: 1px solid var(--border-color); border-radius: 16px; width: 90%; max-width: 800px; position: relative; animation: zoomIn 0.3s ease-out; }
+        @keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .modal-close { color: var(--text-medium); position: absolute; top: 1rem; right: 1.5rem; font-size: 2rem; font-weight: bold; cursor: pointer; transition: color 0.3s ease; }
+        .modal-close:hover { color: var(--accent-teal); }
+        .modal-video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-bottom: 1.5rem; border-radius: 8px; background-color: #000; }
+        .modal-video-container video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        .modal-details h3 { font-size: 1.8rem; color: var(--accent-teal); margin-bottom: 1rem; }
+        .modal-details p { font-size: 1rem; color: var(--text-medium); line-height: 1.7; }
+        .footer { text-align: center; padding: 2rem 0 1.5rem; color: var(--text-medium); font-size: 0.9rem; }
+        
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-        .resource-card h2 {
-            font-size: 1.25rem; /* Reduced font size */
-            color: var(--text-light);
-            font-weight: 600;
-            margin-bottom: 0; /* Removed bottom margin */
-        }
-
-        .resource-card p {
-            color: var(--text-medium);
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-            font-weight: 300;
-            font-size: 0.9rem; /* Reduced font size */
-        }
-
-        .resource-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.6rem 1.2rem; /* Reduced padding */
-            font-size: 0.9rem; /* Reduced font size */
-            background: linear-gradient(90deg, var(--accent-teal), var(--accent-magenta));
-            color: var(--dark-navy);
-            text-decoration: none;
-            border-radius: 20px;
-            font-weight: 50;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 245, 200, 0.2);
-        }
-
-        .resource-link:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 245, 200, 0.3);
-        }
-
-        .footer {
-            text-align: center;
-            padding: 3rem 0 2rem;
-            color: var(--text-medium);
-            font-size: 0.9rem;
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
+        /* Responsive Styles */
         @media (max-width: 768px) {
-            .header h1 { font-size: 2.5rem; }
+            .container { padding: 1rem; }
+            .header h1 { font-size: 2.2rem; }
             .header p { font-size: 1rem; }
-            .summary-section { padding: 1.5rem; }
-            .summary-section h2 { font-size: 2rem; }
-            .resource-card { padding: 1.5rem; }
-            .kaggle-item { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+            .section-title { font-size: 1.6rem; }
+            .showcase-section { padding-left: 0.5rem; padding-right: 0.5rem; }
+            #scroll-left { left: 5px; }
+            #scroll-right { right: 5px; }
+            .kaggle-section { padding: 1rem; }
+            .kaggle-item-header h3 { font-size: 1rem; }
+            .kaggle-section p { font-size: 0.85rem; }
+            .coursework-table-container { border: none; background: transparent; padding: 0; overflow-x: initial; }
+            .coursework-table thead { display: none; }
+            .coursework-table, .coursework-table tbody, .coursework-table tr, .coursework-table td { display: block; width: 100%; }
+            .coursework-table tr { margin-bottom: 1rem; border-radius: 8px; border: 1px solid var(--border-color); background: var(--light-navy); overflow: hidden; }
+            .coursework-table td { text-align: right; padding: 0.75rem 1rem; padding-left: 50%; position: relative; border-bottom: 1px solid var(--border-color); }
+            .coursework-table td:last-child { border-bottom: 0; }
+            .coursework-table td::before { content: attr(data-label); position: absolute; left: 1rem; width: calc(50% - 2rem); text-align: left; font-weight: bold; color: var(--text-light); }
+        }
+        @media (max-width: 480px) {
+            .carousel-card { width: 160px; margin: 0.5rem; }
         }
     </style>
 </head>
@@ -316,121 +287,301 @@
         <header class="header">
             <h1>Vinoo J. Nedungadan</h1>
             <p>
-               I am passionate about using data to solve complex challenges. Driven by the thrill of extracting meaningful insights from datasets, I specialize in developing predictive models and data-driven solutions rooted in statistical analysis and machine learning. This page is a collection of some of the tools and resources I've built to aid in that journey..
+               Passionate about using data to solve complex challenges. I specialize in developing predictive models and data-driven solutions rooted in statistical analysis and machine learning. This page is a collection of tools and resources I've built to aid in that journey.
             </p>
             <a href="resume.html" class="resume-link" target="_blank">View My Resume</a>
             <div class="social-links">
-                <a href="#" title="GitHub" target="_blank">
+                <a href="https://github.com/Vinooj?tab=repositories" title="GitHub" target="_blank">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" role="img"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
                 </a>
-                <a href="#" title="LinkedIn" target="_blank">
+                <a href="https://www.linkedin.com/in/vinoo-nedungadan-6b0375" title="LinkedIn" target="_blank">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" role="img"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+                 <a href="https://twitter.com/yourprofile" title="Twitter" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" role="img"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                 </a>
             </div>
         </header>
 
-        <section class="showcase-section">
-            <h2 class="section-title">Vibe Coding experiments</h2>
-            <div class="showcase-grid">
-                <div class="showcase-item">
-                    <a href="https://card-game-app-oe6vnw3l5q-uc.a.run.app">
-                        <img src="img/anpathyaru.png" alt="Anpathyaru56 Card Game that was built to mimic the real world experience of having a table(Desktop) and a Cards in your hand (Phone) running in Google app engine">
-                    </a>
-                </div>
-                <div class="showcase-item">
-                    <a href="https://quizapp-99999.uw.r.appspot.com/flashcard">
-                        <img src="img/quizzapp.png" alt="Screenshot of ML Yearning Decision Tree App">
-                    </a>
-                </div>
-                <div class="showcase-item">
-                    <a href="ml-pipeline.html">
-                        <img src="img/comingsoon.png" alt="Android app to assist in cooking">
-                    </a>
+        <section id="showcase-section" class="showcase-section">
+            <h2 class="section-title">Vibe Coding Experiments</h2>
+            <button id="scroll-left" class="carousel-arrow">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" /></svg>
+            </button>
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <div class="carousel-card" data-video-src="vid/anpathyaru_demo.mp4" data-title="Anpathyaru56 Card Game" data-details="This responsive web application brings the classic Anpathyaru56 card game to life. It was built using a mobile-first approach, where the phone serves as the player's hand and the desktop screen acts as the common table. The backend is powered by Google App Engine, ensuring a scalable and reliable real-time gaming experience.">
+                        <div class="thumbnail-container"><img src="img/anpathyaru.png" alt="Anpathyaru56 Card Game"></div>
+                        <div class="card-content">
+                            <h3>Anpathyaru56 Card Game</h3>
+                            <p>Multiplayer card game syncing phone and desktop.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-card" data-video-src="vid/quizapp_demo.mp4" data-title="ML Yearning Quiz App" data-details="This interactive flashcard application is designed to help users master key concepts from Andrew Ng's 'Machine Learning Yearning.' It transforms theoretical knowledge into a practical study tool, featuring a decision tree quiz to guide users through common machine learning project challenges and solutions.">
+                        <div class="thumbnail-container"><img src="img/quizzapp.png" alt="ML Yearning Decision Tree App"></div>
+                        <div class="card-content">
+                            <h3>ML Yearning Quiz App</h3>
+                            <p>Interactive flashcard and decision tree app.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-card" data-video-src="vid/pipeline_demo.mp4" data-title="End-to-End ML Pipeline" data-details="This project demonstrates a complete, production-ready machine learning pipeline. It covers all stages from data ingestion and preprocessing to model training, evaluation, and deployment. The focus is on best practices, automation, and creating a robust system that can be easily monitored and updated.">
+                         <div class="thumbnail-container"><img src="img/comingsoon.png" alt="ML Pipeline Project"></div>
+                        <div class="card-content">
+                            <h3>End-to-End ML Pipeline</h3>
+                            <p>Template for building production-ready ML systems.</p>
+                        </div>
+                    </div>
+                     <div class="carousel-card" data-video-src="vid/another_app_demo.mp4" data-title="Data Visualization Dashboard" data-details="An interactive dashboard for visualizing complex datasets, built with D3.js and React. Allows users to explore data through dynamic charts and filters, providing insights at a glance.">
+                         <div class="thumbnail-container"><img src="img/comingsoon.png" alt="Data Viz Dashboard"></div>
+                        <div class="card-content">
+                            <h3>Data Viz Dashboard</h3>
+                            <p>Interactive data visualizations with D3.js and React.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <button id="scroll-right" class="carousel-arrow">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" /></svg>
+            </button>
         </section>
         
         <section class="kaggle-section">
             <h2 class="section-title">Kaggle Competitions</h2>
-            <div class="kaggle-grid">
-                <div class="kaggle-item">
-                    <div>
+            <ul>
+                <li>
+                    <div class="kaggle-item-header">
                         <h3>Titanic - Machine Learning from Disaster</h3>
-                        <p>Top 10% | Logistic Regression, Feature Engineering</p>
+                        <a href="#" class="kaggle-item-link" target="_blank">View Submission</a>
                     </div>
-                    <a href="#" class="kaggle-item-link" target="_blank">View Submission</a>
-                </div>
-                <div class="kaggle-item">
-                    <div>
+                    <p><strong>Achievement:</strong> Top 10% &nbsp;&nbsp;|&nbsp;&nbsp; <strong>Skills:</strong> Logistic Regression, Feature Engineering, Data Cleaning</p>
+                </li>
+                <li>
+                    <div class="kaggle-item-header">
                         <h3>House Prices - Advanced Regression Techniques</h3>
-                        <p>Top 15% | XGBoost, Gradient Boosting, Stacking</p>
+                         <a href="#" class="kaggle-item-link" target="_blank">View Submission</a>
                     </div>
-                    <a href="#" class="kaggle-item-link" target="_blank">View Submission</a>
-                </div>
-                 <div class="kaggle-item">
-                    <div>
+                    <p><strong>Achievement:</strong> Top 15% &nbsp;&nbsp;|&nbsp;&nbsp; <strong>Skills:</strong> XGBoost, Gradient Boosting, Stacking, Hyperparameter Tuning</p>
+                </li>
+                 <li>
+                    <div class="kaggle-item-header">
                         <h3>Digit Recognizer</h3>
-                        <p>99.5% Accuracy | Convolutional Neural Network (CNN)</p>
+                         <a href="#" class="kaggle-item-link" target="_blank">View Submission</a>
                     </div>
-                    <a href="#" class="kaggle-item-link" target="_blank">View Submission</a>
-                </div>
-            </div>
+                    <p><strong>Achievement:</strong> 99.5% Accuracy &nbsp;&nbsp;|&nbsp;&nbsp; <strong>Skills:</strong> Convolutional Neural Networks (CNN), TensorFlow, Keras</p>
+                </li>
+            </ul>
         </section>
 
-
-        <main class="resources-grid">
-            <div class="resource-card">
-                <div class="card-header">
-                    <div class="resource-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" role="img">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
-                        </svg>
-                    </div>
-                    <h2>ML Concepts Static</h2>
-                </div>
-                <p>Comprehensive static reference guide covering fundamental machine learning concepts, algorithms, and theoretical foundations.</p>
-                <a href="ml_concepts_static.html" class="resource-link">
-                    <span>Explore</span>
-                    <span>→</span>
-                </a>
+        <section class="coursework-section">
+            <h2 class="section-title">Coursework & Certifications</h2>
+            <div class="coursework-table-container">
+                <table class="coursework-table">
+                    <thead>
+                        <tr>
+                            <th>Certification</th>
+                            <th>Provider</th>
+                            <th>Credential</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Certification">Supervised Machine Learning: Regression and Classification</td>
+                            <td data-label="Provider">Stanford Online</td>
+                            <td data-label="Credential">
+                                <a href="#" class="credential-link" target="_blank">
+                                    <img src="img/SMLBookCover.png" alt="View Certificate Thumbnail">
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td data-label="Certification">Advanced Learning Algorithms</td>
+                            <td data-label="Provider">Stanford Online</td>
+                            <td data-label="Credential">
+                                <a href="#" class="credential-link" target="_blank">
+                                    <img src="img/AMLABookCover.png" alt="View Certificate Thumbnail">
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td data-label="Certification">Unsupervised Learning, Recommenders, Reinforcement Learning</td>
+                            <td data-label="Provider">Stanford Online</td>
+                            <td data-label="Credential">
+                                <a href="#" class="credential-link" target="_blank">
+                                    <img src="img/UMLBookCover.png" alt="View Certificate Thumbnail">
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-
-            <div class="resource-card">
-                <div class="card-header">
-                    <div class="resource-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" role="img">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
-                        </svg>
-                    </div>
-                    <h2>ML Yearning Decision Tree</h2>
-                </div>
-                <p>Interactive decision tree based on Andrew Ng's "Machine Learning Yearning" for systematic ML problem diagnosis and solution strategies.</p>
-                <a href="ml_yearning_html.html" class="resource-link">
-                    <span>Diagnose</span>
-                    <span>🔍</span>
-                </a>
-            </div>
-
-            <div class="resource-card">
-                <div class="card-header">
-                     <div class="resource-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" role="img">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                        </svg>
-                    </div>
-                    <h2>ML Pipeline</h2>
-                </div>
-                <p>End-to-end machine learning pipeline implementation guide with best practices for production-ready ML systems.</p>
-                <a href="ml-pipeline.html" class="resource-link">
-                    <span>Build</span>
-                    <span>🔧</span>
-                </a>
-            </div>
-        </main>
+        </section>
 
         <footer class="footer">
             <p>Designed to structure learning and accelerate growth in data science.</p>
         </footer>
+
     </div>
+
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-video-container">
+                 <video id="modal-video" controls autoplay muted loop playsinline></video>
+            </div>
+            <div id="modal-details" class="modal-details">
+                <h3 id="modal-title"></h3>
+                <p id="modal-description"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        function setupCarousel() {
+            const showcaseSection = document.getElementById('showcase-section');
+            if (!showcaseSection) return;
+
+            const container = showcaseSection.querySelector('.carousel-container');
+            const track = showcaseSection.querySelector('.carousel-track');
+            if (!track || !container) return;
+            
+            if (window.carouselAutoScroll) clearInterval(window.carouselAutoScroll);
+
+            const originalCards = Array.from(track.children).filter(c => !c.classList.contains('clone'));
+            if (originalCards.length === 0) {
+                showcaseSection.classList.add('static');
+                return;
+            }
+
+            const scrollLeftBtn = document.getElementById('scroll-left');
+            const scrollRightBtn = document.getElementById('scroll-right');
+            
+            let cardWidth = originalCards[0].offsetWidth + parseInt(getComputedStyle(originalCards[0]).marginRight) * 2;
+            let visibleCards = Math.floor(container.clientWidth / cardWidth);
+
+            if (originalCards.length <= visibleCards) {
+                showcaseSection.classList.remove('scrolling');
+                showcaseSection.classList.add('static');
+                track.style.transform = 'translateX(0px)';
+                const clones = track.querySelectorAll('.clone');
+                clones.forEach(clone => clone.remove());
+                return; 
+            }
+
+            showcaseSection.classList.add('scrolling');
+            showcaseSection.classList.remove('static');
+
+            let currentIndex = originalCards.length;
+            let isTransitioning = false;
+
+            if (track.querySelectorAll('.clone').length === 0) {
+                const appendClones = originalCards.map(card => {
+                    const clone = card.cloneNode(true);
+                    clone.classList.add('clone');
+                    return clone;
+                });
+                const prependClones = originalCards.map(card => {
+                    const clone = card.cloneNode(true);
+                    clone.classList.add('clone');
+                    return clone;
+                });
+                
+                track.append(...appendClones);
+                track.prepend(...prependClones);
+            }
+            
+            const setPosition = () => {
+                track.style.transition = 'none';
+                track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+            };
+            
+            setPosition();
+            
+            const moveTo = (direction) => {
+                if (isTransitioning) return;
+                isTransitioning = true;
+                
+                direction === 'right' ? currentIndex++ : currentIndex--;
+                track.style.transition = 'transform 0.4s ease-in-out';
+                track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+            };
+            
+            track.addEventListener('transitionend', () => {
+                isTransitioning = false;
+                if (currentIndex >= originalCards.length * 2) {
+                    currentIndex = originalCards.length;
+                    setPosition();
+                }
+                if (currentIndex < originalCards.length) {
+                    currentIndex = originalCards.length * 2 - 1;
+                     setPosition();
+                }
+            });
+
+            const startAutoScroll = () => {
+                stopAutoScroll();
+                window.carouselAutoScroll = setInterval(() => moveTo('right'), 4000);
+            };
+            const stopAutoScroll = () => clearInterval(window.carouselAutoScroll);
+            
+            scrollRightBtn.onclick = () => moveTo('right');
+            scrollLeftBtn.onclick = () => moveTo('left');
+            showcaseSection.onmouseenter = stopAutoScroll;
+            showcaseSection.onmouseleave = startAutoScroll;
+            
+            startAutoScroll();
+        }
+        
+        function setupModal() {
+            const modal = document.getElementById('project-modal');
+            if (!modal) return;
+            
+            const modalVideo = document.getElementById('modal-video');
+            const modalTitle = document.getElementById('modal-title');
+            const modalDescription = document.getElementById('modal-description');
+            const closeModal = modal.querySelector('.modal-close');
+            
+            document.body.addEventListener('click', function(e) {
+                const card = e.target.closest('.carousel-card');
+                if (card) {
+                    const videoSrc = card.dataset.videoSrc;
+                    const title = card.dataset.title;
+                    const details = card.dataset.details;
+                    if (!videoSrc) return;
+
+                    modalTitle.textContent = title;
+                    modalDescription.textContent = details;
+                    modalVideo.src = videoSrc;
+                    
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                    if (window.carouselAutoScroll) clearInterval(window.carouselAutoScroll);
+                }
+            });
+
+            const closeTheModal = () => {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+                modalVideo.pause();
+                modalVideo.src = "";
+            };
+
+            closeModal.addEventListener('click', closeTheModal);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeTheModal();
+            });
+        }
+        
+        setupCarousel();
+        setupModal();
+        
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(setupCarousel, 250);
+        });
+    });
+    </script>
 </body>
 </html>
