@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step 5: Model Training & Evaluation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Fira+Code&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #f0f4f8; padding: 20px; color: #333; }
+        .container { max-width: 1400px; margin: 0 auto; background: #ffffff; border-radius: 20px; padding: 30px; box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08); }
+        .page-header { background: linear-gradient(135deg, #a8dadc, #457b9d); color: white; padding: 20px 30px; border-radius: 15px; margin-bottom: 30px; font-size: 1.8rem; font-weight: 600; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); }
+        .tree-container { background: #fdfdfd; border-radius: 15px; padding: 30px; margin: 20px 0; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05); border: 1px solid #e0e7eb; }
+        .tree { font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6; color: #333; white-space: pre-wrap; overflow-x: auto; }
+        .priority-5 { color: #6a994e; font-weight: bold; }
+        .package { background: #a8dadc; color: #333; padding: 2px 8px; border-radius: 12px; font-size: 12px; font-weight: 500; margin: 0 3px; display: inline-block; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .method-description { font-style: italic; color: #777; margin-left: 20px; font-size: 12px; }
+        .highlight { background: #ffe6a7; padding: 2px 5px; border-radius: 3px; font-weight: bold; color: #333; }
+        .importance-marker { font-size: 0.8em; font-weight: bold; padding: 2px 6px; border-radius: 8px; margin-left: 8px; vertical-align: middle; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .importance-marker.level-5 { background-color: #fcebeb; color: #e63946; } .importance-marker.level-4 { background-color: #fff3e0; color: #f4a261; } .importance-marker.level-3 { background-color: #e0f2f7; color: #457b9d; } .importance-marker.level-2 { background-color: #f1eff8; color: #8d86c9; } .importance-marker.level-1 { background-color: #e6f5e6; color: #6a994e; }
+        .back-link { display: inline-block; text-align: center; margin-top: 30px; padding: 10px 20px; text-decoration: none; color: white; font-weight: bold; background: #457b9d; border-radius: 10px; transition: background 0.3s ease; }
+        .back-link:hover { background: #e63946; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">Step 5: Model Training & Evaluation</div>
+        <div class="tree-container">
+            <div class="tree">
+<span class="priority-5">5. MODEL TRAINING & EVALUATION (CRITICAL - Fifth Priority)</span> <span class="importance-marker level-5">(5/5)</span>
+│   ├── <span class="highlight">5.1 Model Training</span> <span class="importance-marker level-5">(5/5)</span>
+│   │   ├── Data Splitting (Train/Test/Validation) <span class="importance-marker level-5">(5/5)</span>
+│   │   │   ├── <span class="package">sklearn.model_selection.train_test_split</span>
+│   │   │   └── <span class="method-description">✓ Essential for unbiased evaluation of model performance</span>
+│   │   ├── Model Fitting <span class="importance-marker level-5">(5/5)</span>
+│   │   │   ├── <span class="package">model.fit(X_train, y_train)</span>
+│   │   │   └── <span class="method-description">✓ The core process of learning patterns from training data</span>
+│   │   └── Ensemble Methods <span class="importance-marker level-4">(4/5)</span>
+│   │       ├── Bagging (e.g., Random Forest) <span class="importance-marker level-4">(4/5)</span>
+│   │       │   ├── <span class="package">sklearn.ensemble.BaggingClassifier</span>
+│   │       │   └── <span class="method-description">✓ Training multiple models independently and averaging predictions</span>
+│   │       ├── Boosting (e.g., AdaBoost, Gradient Boosting, XGBoost, LightGBM, CatBoost) <span class="importance-marker level-5">(5/5)</span>
+│   │       │   ├── <span class="package">sklearn.ensemble</span>
+│   │       │   ├── <span class="package">xgboost</span>
+│   │       │   ├── <span class="package">lightgbm</span>
+│   │       │   ├── <span class="package">catboost</span>
+│   │       │   └── <span class="method-description">✓ Sequentially building models to correct errors of previous models</span>
+│   │       └── Stacking <span class="importance-marker level-3">(3/5)</span>
+│   │           ├── <span class="package">sklearn.ensemble.StackingClassifier</span>
+│   │           └── <span class="method-description">✓ Training a meta-model on predictions of multiple base models</span>
+│   │
+│   ├── <span class="highlight">5.2 Model Evaluation (Metrics)</span> <span class="importance-marker level-5">(5/5)</span>
+│   │   ├── Classification Metrics <span class="importance-marker level-5">(5/5)</span>
+│   │   │   ├── Accuracy <span class="importance-marker level-5">(5/5)</span>
+│   │   │   ├── Precision, Recall, F1-Score <span class="importance-marker level-5">(5/5)</span>
+│   │   │   │   ├── <span class="package">sklearn.metrics.accuracy_score</span>
+│   │   │   │   ├── <span class="package">sklearn.metrics.precision_score</span>
+│   │   │   │   ├── <span class="package">sklearn.metrics.recall_score</span>
+│   │   │   │   ├── <span class="package">sklearn.metrics.f1_score</span>
+│   │   │   │   └── <span class="method-description">✓ For evaluating classification model performance</span>
+│   │   │   ├── ROC AUC <span class="importance-marker level-4">(4/5)</span>
+│   │   │   │   ├── <span class="package">sklearn.metrics.roc_auc_score</span>
+│   │   │   │   └── <span class="method-description">✓ Measures classifier's ability to distinguish between classes</span>
+│   │   │   └── Confusion Matrix <span class="importance-marker level-5">(5/5)</span>
+│   │   │       ├── <span class="package">sklearn.metrics.confusion_matrix</span>
+│   │   │       └── <span class="method-description">✓ Visualizes performance of a classification model</span>
+│   │   └── Regression Metrics <span class="importance-marker level-5">(5/5)</span>
+│   │       ├── Mean Squared Error (MSE), Root Mean Squared Error (RMSE) <span class="importance-marker level-5">(5/5)</span>
+│   │       │   ├── <span class="package">sklearn.metrics.mean_squared_error</span>
+│   │       │   └── <span class="method-description">✓ Common metrics for regression, penalize larger errors more</span>
+│   │       ├── Mean Absolute Error (MAE) <span class="importance-marker level-4">(4/5)</span>
+│   │       │   ├── <span class="package">sklearn.metrics.mean_absolute_error</span>
+│   │       │   └── <span class="method-description">✓ Less sensitive to outliers than MSE</span>
+│   │       └── R-squared ($R^2$) <span class="importance-marker level-4">(4/5)</span>
+│   │           ├── <span class="package">sklearn.metrics.r2_score</span>
+│   │           └── <span class="method-description">✓ Proportion of variance in dependent variable predictable from independent variables</span>
+│   │
+│   └── <span class="highlight">5.3 Overfitting/Underfitting Diagnosis</span> <span class="importance-marker level-5">(5/5)</span>
+│       ├── Learning Curves <span class="importance-marker level-4">(4/5)</span>
+│       │   ├── <span class="package">sklearn.model_selection.learning_curve</span>
+│       │   └── <span class="method-description">✓ Visualizing model performance with increasing training data size</span>
+│       ├── Validation Curves <span class="importance-marker level-4">(4/5)</span>
+│       │   ├── <span class="package">sklearn.model_selection.validation_curve</span>
+│       │   └── <span class="method-description">✓ Visualizing model performance with varying hyperparameter values</span>
+│       └── Bias-Variance Trade-off <span class="importance-marker level-5">(5/5)</span>
+│           ├── <span class="package">Conceptual understanding</span>
+│           └── <span class="method-description">✓ Balancing model complexity to minimize generalization error</span>
+            </div>
+        </div>
+        <a href="../data_pipeline_overview.html" class="back-link">← Back to Main Pipeline</a>
+    </div>
+</body>
+</html>

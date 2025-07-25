@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Pipeline - Complete 7 Steps</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+            padding: 40px 20px;
+            line-height: 1.3;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: 2.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .pipeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .phase {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        /* Add hover effect and pointer cursor */
+        .phase:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+        }
+        
+        /* Style for the anchor tag to make the whole cell clickable */
+        .phase a {
+            text-decoration: none; /* Removes underline from links */
+            color: inherit; /* Inherits text color from parent */
+            display: block; /* Makes the link fill the container */
+        }
+
+        .phase-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            border-radius: 6px;
+            font-size: 16px;
+            color: white;
+            flex-shrink: 0; /* Prevent icon from shrinking */
+        }
+
+        .phase-1 .phase-icon { background: #4A90E2; }
+        .phase-2 .phase-icon { background: #F5A623; }
+        .phase-3 .phase-icon { background: #BD10E0; }
+        .phase-4 .phase-icon { background: #50E3C2; }
+        .phase-5 .phase-icon { background: #E74C3C; }
+        .phase-6 .phase-icon { background: #2ECC71; }
+        .phase-7 .phase-icon { background: #9B59B6; }
+
+        .phase-content {
+            padding: 18px;
+            padding-top: 15px;
+        }
+
+        .phase-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 12px;
+            display: flex; /* Use flexbox for alignment */
+            align-items: center; /* Vertically center items */
+            gap: 10px; /* Space between icon and text */
+        }
+        
+        .phase-title-text {
+            flex-grow: 1; /* Allow text to take up remaining space */
+        }
+
+        .phase-description {
+            color: #555;
+            margin-bottom: 12px;
+            font-size: 0.85rem;
+            line-height: 1.3;
+        }
+
+        .steps-list {
+            list-style: none;
+        }
+
+        .steps-list li {
+            color: #333;
+            margin-bottom: 5px;
+            font-size: 0.85rem;
+            position: relative;
+            padding-left: 12px;
+            line-height: 1.3;
+        }
+
+        .steps-list li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #666;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .pipeline {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Implementing Machine Learning Pipeline:<br>A Strategic Approach</h1>
+        </div>
+
+        <div class="pipeline">
+            <div class="phase phase-1">
+                <a href="pages/step1-preprocessing.html">
+                    <div class="phase-content">
+                        <div class="phase-title">
+                            <div class="phase-icon">🔍</div>
+                            <span class="phase-title-text">Step 1: Data Preprocessing & Cleaning</span>
+                        </div>
+                        <div class="phase-description">
+                            Begin by establishing a solid data foundation through comprehensive preprocessing and cleaning.
+                        </div>
+                        <ul class="steps-list">
+                            <li>Data cleaning (inconsistencies, duplicates, noise)</li>
+                            <li>Missing value imputation - must be done first</li>
+                            <li>Outlier detection & treatment - early identification crucial</li>
+                            <li>Data integration & transformation (aggregation, generalization)</li>
+                        </ul>
+                    </div>
+                </a>
+            </div>
+
+            <div class="phase phase-2">
+                <a href="pages/step2-feature-engineering.html">
+                    <div class="phase-content">
+                        <div class="phase-title">
+                            <div class="phase-icon">⚙️</div>
+                            <span class="phase-title-text">Step 2: Feature Engineering</span>
+                        </div>
+                        <div class="phase-description">
+                            Transform and optimize features to maximize model performance and interpretability.
+                        </div>
+                        <ul class="steps-list">
+                            <li>Categorical encoding - transform categorical variables</li>
+                            <li>Numerical scaling - normalize/standardize features</li>
+                            <li>Feature creation - generate new meaningful features</li>
+                        </ul>
+                    </div>
+                </a>
+            </div>
+
+            <div class="phase phase-3">
+                <a href="pages/step3-feature-selection.html">
+                    <div class="phase-content">
+                        <div class="phase-title">
+                            <div class="phase-icon">🎯</div>
+                            <span class="phase-title-text">Step 3: Feature Selection</span>
+                        </div>
+                        <div class="phase-description">
+                            Select the most relevant features to improve model performance and reduce complexity.
+                        </div>
+                        <ul class="steps-list">
+                            <li>Filter methods - quick elimination of irrelevant features</li>
+                            <li>Wrapper/embedded methods - model-based selection</li>
+                            <li>Correlation analysis - remove redundant features</li>
+                        </ul>
+                    </div>
+                </a>
+            </div>
+
+            <div class="phase phase-4">
+                <a href="pages/step4-model-selection.html">
+                    <div class="phase-content">
+                        <div class="phase-title">
+                            <div class="phase-icon">🤖</div>
+                            <span class="phase-title-text">Step 4: Model Selection</span>
+                        </div>
+                        <div class="phase-description">
+                            Choose appropriate algorithms and optimize hyperparameters for best performance.
+                        </div>
+                        <ul class="steps-list">
+                            <li>Algorithm selection - choosing the right model type</li>
+                            <li>Hyperparameter tuning - optimizing model parameters</li>
+                            <li>Cross-validation strategies - robust evaluation setup</li>
+                        </ul>
+                    </div>
+                </a>
+            </div>
+
+            <div class="phase phase-5">
+                <a href="pages/step5-training-evaluation.html">
+                    <div class="phase-content">
+                        <div class="phase-title">
+                            <div class="phase-icon">🚀</div>
+                            <span class="phase-title-text">Step 5: Model Training & Evaluation</span>
+                        </div>
+                        <div class="phase-description">
+                            Train models and evaluate their performance using appropriate metrics and techniques.
+                        </div>
+                        <ul class="steps-list">
+                            <li>Data splitting - preparing data for training and testing</li>
+                            <li>Model fitting - training the chosen model</li>
+                            <li>Ensemble methods - combining models for better performance</li>
+                            <li>Model evaluation - using metrics to assess performance</li>
+                            <li>Overfitting/underfitting diagnosis - identifying model issues</li>
+                        </ul>
+                    </div>
+                </a>
+            </div>
+
+            <div class="phase phase-6">
+                <a href="pages/step6-regularization.html">
+                    <div class="phase-content">
+                        <div class="phase-title">
+                            <div class="phase-icon">🛡️</div>
+                            <span class="phase-title-text">Step 6: Regularization Strategies</span>
+                        </div>
+                        <div class="phase-description">
+                            Apply regularization techniques to prevent overfitting and improve generalization.
+                        </div>
+                        <ul class="steps-list">
+                            <li>Applied during model training - prevent overfitting</li>
+                            <li>Hyperparameter tuning - optimize regularization strength</li>
+                        </ul>
+                    </div>
+                </a>
+            </div>
+
+            <div class="phase phase-7">
+                <a href="pages/step7-dimensionality-reduction.html">
+                    <div class="phase-content">
+                        <div class="phase-title">
+                            <div class="phase-icon">📊</div>
+                            <span class="phase-title-text">Step 7: Dimensionality Reduction</span>
+                        </div>
+                        <div class="phase-description">
+                            Reduce feature dimensions when necessary for computational efficiency and visualization.
+                        </div>
+                        <ul class="steps-list">
+                            <li>Used when necessary - high-dimensional data, visualization</li>
+                            <li>Computational efficiency - reduce training time</li>
+                        </ul>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

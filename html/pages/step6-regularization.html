@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step 6: Regularization Strategies</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Fira+Code&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #f0f4f8; padding: 20px; color: #333; }
+        .container { max-width: 1400px; margin: 0 auto; background: #ffffff; border-radius: 20px; padding: 30px; box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08); }
+        .page-header { background: linear-gradient(135deg, #a8dadc, #457b9d); color: white; padding: 20px 30px; border-radius: 15px; margin-bottom: 30px; font-size: 1.8rem; font-weight: 600; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); }
+        .tree-container { background: #fdfdfd; border-radius: 15px; padding: 30px; margin: 20px 0; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05); border: 1px solid #e0e7eb; }
+        .tree { font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6; color: #333; white-space: pre-wrap; overflow-x: auto; }
+        .priority-4 { color: #8d86c9; font-weight: bold; }
+        .package { background: #a8dadc; color: #333; padding: 2px 8px; border-radius: 12px; font-size: 12px; font-weight: 500; margin: 0 3px; display: inline-block; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .method-description { font-style: italic; color: #777; margin-left: 20px; font-size: 12px; }
+        .highlight { background: #ffe6a7; padding: 2px 5px; border-radius: 3px; font-weight: bold; color: #333; }
+        .importance-marker { font-size: 0.8em; font-weight: bold; padding: 2px 6px; border-radius: 8px; margin-left: 8px; vertical-align: middle; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .importance-marker.level-5 { background-color: #fcebeb; color: #e63946; } .importance-marker.level-4 { background-color: #fff3e0; color: #f4a261; } .importance-marker.level-3 { background-color: #e0f2f7; color: #457b9d; } .importance-marker.level-2 { background-color: #f1eff8; color: #8d86c9; } .importance-marker.level-1 { background-color: #e6f5e6; color: #6a994e; }
+        .back-link { display: inline-block; text-align: center; margin-top: 30px; padding: 10px 20px; text-decoration: none; color: white; font-weight: bold; background: #457b9d; border-radius: 10px; transition: background 0.3s ease; }
+        .back-link:hover { background: #e63946; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">Step 6: Regularization Strategies</div>
+        <div class="tree-container">
+            <div class="tree">
+<span class="priority-4">6. REGULARIZATION STRATEGIES (MEDIUM IMPORTANCE - Sixth Priority)</span> <span class="importance-marker level-4">(4/5)</span>
+│   ├── <span class="highlight">Linear Model Regularization</span> <span class="importance-marker level-4">(4/5)</span>
+│   │   ├── L1 Regularization (Lasso) <span class="importance-marker level-5">(5/5)</span>
+│   │   │   ├── <span class="package">sklearn.linear_model.Lasso</span>
+│   │   │   └── <span class="method-description">✓ Feature selection property, drives weights to zero</span>
+│   │   ├── L2 Regularization (Ridge) <span class="importance-marker level-4">(4/5)</span>
+│   │   │   ├── <span class="package">sklearn.linear_model.Ridge</span>
+│   │   │   └── <span class="method-description">✓ Shrinks coefficients, prevents overfitting, no explicit selection</span>
+│   │   ├── Elastic Net (L1+L2) <span class="importance-marker level-4">(4/5)</span>
+│   │   │   ├── <span class="package">sklearn.linear_model.ElasticNet</span>
+│   │   │   └── <span class="method-description">✓ Hybrid of L1 and L2, handles correlated features well</span>
+│   │   └── Group Lasso <span class="importance-marker level-2">(2/5)</span>
+│   │       ├── <span class="package">sklearn_learn_contrib.group_lasso</span>
+│   │       └── <span class="method-description">✓ Selects/eliminates groups of features together</span>
+│   │
+│   ├── <span class="highlight">Tree-Based Regularization</span> <span class="importance-marker level-3">(3/5)</span>
+│   │   ├── Max Depth Control <span class="importance-marker level-4">(4/5)</span>
+│   │   │   ├── <span class="package">sklearn.tree.DecisionTreeClassifier(max_depth)</span>
+│   │   │   ├── <span class="package">xgboost.XGBClassifier(max_depth)</span>
+│   │   │   └── <span class="method-description">✓ Limits tree growth, prevents overfitting</span>
+│   │   ├── Min Samples Split/Leaf <span class="importance-marker level-4">(4/5)</span>
+│   │   │   ├── <span class="package">sklearn.tree.DecisionTreeClassifier(min_samples_split)</span>
+│   │   │   ├── <span class="package">sklearn.tree.DecisionTreeClassifier(min_samples_leaf)</span>
+│   │   │   └── <span class="method-description">✓ Controls minimum samples required to split/form a leaf</span>
+│   │   └── Feature Subsetting (e.g., Random Forest) <span class="importance-marker level-3">(3/5)</span>
+│   │       ├── <span class="package">sklearn.ensemble.RandomForestClassifier(max_features)</span>
+│   │       └── <span class="method-description">✓ Randomly selects a subset of features for each tree</span>
+│   │
+│   └── <span class="highlight">Neural Network Regularization</span> <span class="importance-marker level-3">(3/5)</span>
+│       ├── Dropout <span class="importance-marker level-4">(4/5)</span>
+│       │   ├── <span class="package">tensorflow.keras.layers.Dropout</span>
+│       │   ├── <span class="package">torch.nn.Dropout</span>
+│       │   └── <span class="method-description">✓ Randomly sets a fraction of input units to 0 at each update</span>
+│       ├── Batch Normalization <span class="importance-marker level-4">(4/5)</span>
+│       │   ├── <span class="package">tensorflow.keras.layers.BatchNormalization</span>
+│   │   │   └── <span class="method-description">✓ Normalizes layer inputs, reduces internal covariate shift</span>
+│   │   └── Weight Decay (L1/L2 penalty) <span class="importance-marker level-3">(3/5)</span>
+│       │   ├── <span class="package">tensorflow.keras.regularizers.l1_l2</span>
+│       │   ├── <span class="package">torch.optim.Adam(weight_decay)</span>
+│       │   └── <span class="method-description">✓ Adds penalty to weights, similar to L1/L2 regularization</span>
+            </div>
+        </div>
+        <a href="../data_pipeline_overview.html" class="back-link">← Back to Main Pipeline</a>
+    </div>
+</body>
+</html>

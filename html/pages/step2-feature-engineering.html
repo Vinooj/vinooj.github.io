@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step 2: Feature Engineering</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Fira+Code&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #f0f4f8; padding: 20px; color: #333; }
+        .container { max-width: 1400px; margin: 0 auto; background: #ffffff; border-radius: 20px; padding: 30px; box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08); }
+        .page-header { background: linear-gradient(135deg, #a8dadc, #457b9d); color: white; padding: 20px 30px; border-radius: 15px; margin-bottom: 30px; font-size: 1.8rem; font-weight: 600; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); }
+        .tree-container { background: #fdfdfd; border-radius: 15px; padding: 30px; margin: 20px 0; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05); border: 1px solid #e0e7eb; }
+        .tree { font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6; color: #333; white-space: pre-wrap; overflow-x: auto; }
+        .priority-2 { color: #f4a261; font-weight: bold; }
+        .package { background: #a8dadc; color: #333; padding: 2px 8px; border-radius: 12px; font-size: 12px; font-weight: 500; margin: 0 3px; display: inline-block; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .method-description { font-style: italic; color: #777; margin-left: 20px; font-size: 12px; }
+        .highlight { background: #ffe6a7; padding: 2px 5px; border-radius: 3px; font-weight: bold; color: #333; }
+        .importance-marker { font-size: 0.8em; font-weight: bold; padding: 2px 6px; border-radius: 8px; margin-left: 8px; vertical-align: middle; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .importance-marker.level-5 { background-color: #fcebeb; color: #e63946; } .importance-marker.level-4 { background-color: #fff3e0; color: #f4a261; } .importance-marker.level-3 { background-color: #e0f2f7; color: #457b9d; } .importance-marker.level-2 { background-color: #f1eff8; color: #8d86c9; } .importance-marker.level-1 { background-color: #e6f5e6; color: #6a994e; }
+        .back-link { display: inline-block; text-align: center; margin-top: 30px; padding: 10px 20px; text-decoration: none; color: white; font-weight: bold; background: #457b9d; border-radius: 10px; transition: background 0.3s ease; }
+        .back-link:hover { background: #e63946; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">Step 2: Feature Engineering</div>
+        <div class="tree-container">
+            <div class="tree">
+<span class="priority-2">2. FEATURE ENGINEERING (HIGH IMPORTANCE - Second Priority)</span> <span class="importance-marker level-4">(4/5)</span>
+│   ├── <span class="highlight">Categorical Encoding</span> <span class="importance-marker level-4">(4/5)</span>
+│   │   ├── One-Hot Encoding <span class="importance-marker level-5">(5/5)</span>
+│   │   │   ├── <span class="package">sklearn.preprocessing.OneHotEncoder</span>
+│   │   │   ├── <span class="package">pandas.get_dummies()</span>
+│   │   │   └── <span class="method-description">✓ Best for nominal categories, avoids ordinal assumptions</span>
+│   │   ├── Label Encoding <span class="importance-marker level-4">(4/5)</span>
+│   │   │   ├── <span class="package">sklearn.preprocessing.LabelEncoder</span>
+│   │   │   └── <span class="method-description">✓ Suitable for ordinal categories with natural ordering</span>
+│   │   ├── Ordinal Encoding <span class="importance-marker level-4">(4/5)</span>
+│   │   │   ├── <span class="package">sklearn.preprocessing.OrdinalEncoder</span>
+│   │   │   └── <span class="method-description">✓ Preserves ordinal relationships between categories</span>
+│   │   ├── Target Encoding <span class="importance-marker level-3">(3/5)</span>
+│   │   │   ├── <span class="package">category_encoders.TargetEncoder</span>
+│   │   │   ├── <span class="package">category_encoders.MEstimateEncoder</span>
+│   │   │   └── <span class="method-description">✓ Uses target statistics, good for high-cardinality categories</span>
+│   │   ├── Binary Encoding <span class="importance-marker level-2">(2/5)</span>
+│   │   │   ├── <span class="package">category_encoders.BinaryEncoder</span>
+│   │   │   └── <span class="method-description">✓ Reduces dimensionality compared to one-hot</span>
+│   │   ├── Hash Encoding <span class="importance-marker level-2">(2/5)</span>
+│   │   │   ├── <span class="package">category_encoders.HashingEncoder</span>
+│   │   │   └── <span class="method-description">✓ Fixed-size output, handles unseen categories</span>
+│   │   └── Frequency Encoding <span class="importance-marker level-2">(2/5)</span>
+│   │       ├── <span class="package">category_encoders.CountEncoder</span>
+│   │       └── <span class="method-description">✓ Replaces categories with their occurrence frequency</span>
+│   │
+│   ├── <span class="highlight">Numerical Transformations</span> <span class="importance-marker level-4">(4/5)</span>
+│   │   ├── Scaling & Normalization <span class="importance-marker level-5">(5/5)</span>
+│   │   │   ├── StandardScaler (Z-score) <span class="importance-marker level-5">(5/5)</span>
+│   │   │   │   ├── <span class="package">sklearn.preprocessing.StandardScaler</span>
+│   │   │   │   └── <span class="method-description">✓ Mean=0, Std=1, best for normally distributed data</span>
+│   │   │   ├── MinMaxScaler <span class="importance-marker level-5">(5/5)</span>
+│   │   │   │   ├── <span class="package">sklearn.preprocessing.MinMaxScaler</span>
+│   │   │   │   └── <span class="method-description">✓ Scales to [0,1] range, preserves relationships</span>
+│   │   │   ├── RobustScaler <span class="importance-marker level-4">(4/5)</span>
+│   │   │   │   ├── <span class="package">sklearn.preprocessing.RobustScaler</span>
+│   │   │   │   └── <span class="method-description">✓ Uses median and IQR, robust to outliers</span>
+│   │   │   ├── MaxAbsScaler <span class="importance-marker level-3">(3/5)</span>
+│   │   │   │   ├── <span class="package">sklearn.preprocessing.MaxAbsScaler</span>
+│   │   │   │   └── <span class="method-description">✓ Scales by maximum absolute value, preserves sparsity</span>
+│   │   │   └── Normalizer <span class="importance-marker level-3">(3/5)</span>
+│   │   │       ├── <span class="package">sklearn.preprocessing.Normalizer</span>
+│   │   │       └── <span class="method-description">✓ Scales individual samples to unit norm</span>
+│   │   ├── Distribution Transformation <span class="importance-marker level-4">(4/5)</span>
+│   │   │   ├── Log Transform <span class="importance-marker level-4">(4/5)</span>
+│   │   │   │   ├── <span class="package">numpy.log1p()</span>
+│   │   │   │   ├── <span class="package">numpy.log()</span>
+│   │   │   │   └── <span class="method-description">✓ Reduces right skewness, handles positive values</span>
+│   │   │   ├── Square Root Transform <span class="importance-marker level-3">(3/5)</span>
+│   │   │   │   ├── <span class="package">numpy.sqrt()</span>
+│   │   │   │   └── <span class="method-description">✓ Moderate skewness reduction</span>
+│   │   │   ├── Box-Cox Transform <span class="importance-marker level-3">(3/5)</span>
+│   │   │   │   ├── <span class="package">scipy.stats.boxcox()</span>
+│   │   │   │   ├── <span class="package">sklearn.preprocessing.PowerTransformer(method='box-cox')</span>
+│   │   │   │   └── <span class="method-description">✓ Optimal power transformation for positive data</span>
+│   │   │   └── Yeo-Johnson Transform <span class="importance-marker level-3">(3/5)</span>
+│   │   │       ├── <span class="package">sklearn.preprocessing.PowerTransformer(method='yeo-johnson')</span>
+│   │   │       └── <span class="method-description">✓ Handles both positive and negative values</span>
+│   │   └── Binning/Discretization <span class="importance-marker level-4">(4/5)</span>
+│   │       ├── Equal-Width Binning <span class="importance-marker level-4">(4/5)</span>
+│   │       │   ├── <span class="package">sklearn.preprocessing.KBinsDiscretizer(strategy='uniform')</span>
+│   │       │   ├── <span class="package">pandas.cut()</span>
+│   │       │   └── <span class="method-description">✓ Equal-sized intervals, may have unequal frequencies</span>
+│   │       ├── Equal-Frequency Binning <span class="importance-marker level-4">(4/5)</span>
+│   │       │   ├── <span class="package">sklearn.preprocessing.KBinsDiscretizer(strategy='quantile')</span>
+│   │       │   ├── <span class="package">pandas.qcut()</span>
+│   │       │   └── <span class="method-description">✓ Equal sample sizes per bin</span>
+│   │       └── K-Means Binning <span class="importance-marker level-3">(3/5)</span>
+│   │           ├── <span class="package">sklearn.preprocessing.KBinsDiscretizer(strategy='kmeans')</span>
+│   │           └── <span class="method-description">✓ Clusters data points into bins using K-means</span>
+│   │
+│   ├── <span class="highlight">Feature Creation</span> <span class="importance-marker level-4">(4/5)</span>
+│   │   ├── Polynomial Features <span class="importance-marker level-4">(4/5)</span>
+│   │   │   ├── <span class="package">sklearn.preprocessing.PolynomialFeatures</span>
+│   │   │   └── <span class="method-description">✓ Creates polynomial and interaction terms</span>
+│   │   ├── Interaction Features <span class="importance-marker level-4">(4/5)</span>
+│   │   │   ├── <span class="package">sklearn.preprocessing.PolynomialFeatures(interaction_only=True)</span>
+│   │   │   └── <span class="method-description">✓ Only interaction terms, no polynomial terms</span>
+│   │   ├── Domain-Specific Features <span class="importance-marker level-5">(5/5)</span>
+│   │   │   ├── Date/Time Features <span class="importance-marker level-5">(5/5)</span>
+│   │   │   │   ├── <span class="package">pandas.dt.year, pandas.dt.month, pandas.dt.dayofweek</span>
+│   │   │   │   ├── <span class="package">featuretools.primitives.TimeSeriesFeatures</span>
+│   │   │   │   └── <span class="method-description">✓ Extract temporal patterns and cyclical features</span>
+│   │   │   ├── Text Features (TF-IDF, N-grams) <span class="importance-marker level-4">(4/5)</span>
+│   │   │   │   ├── <span class="package">sklearn.feature_extraction.text.TfidfVectorizer</span>
+│   │   │   │   ├── <span class="package">sklearn.feature_extraction.text.CountVectorizer</span>
+│   │   │   │   └── <span class="method-description">✓ Convert text to numerical features</span>
+│   │   │   └── Geospatial Features <span class="importance-marker level-3">(3/5)</span>
+│   │   │       ├── <span class="package">geopy.distance</span>
+│   │   │       └── <span class="method-description">✓ Distance calculations, coordinate transformations</span>
+│   │   └── Automated Feature Engineering <span class="importance-marker level-2">(2/5)</span>
+│   │       ├── <span class="package">featuretools.dfs()</span>
+│   │       ├── <span class="package">tsfresh.extract_features()</span>
+│   │       └── <span class="method-description">✓ Automatically generates features from relational data</span>
+            </div>
+        </div>
+        <a href="../data_pipeline_overview.html" class="back-link">← Back to Main Pipeline</a>
+    </div>
+</body>
+</html>

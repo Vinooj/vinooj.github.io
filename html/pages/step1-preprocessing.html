@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step 1: Data Preprocessing & Cleaning</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Fira+Code&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #f0f4f8; padding: 20px; color: #333; }
+        .container { max-width: 1400px; margin: 0 auto; background: #ffffff; border-radius: 20px; padding: 30px; box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08); }
+        .page-header { background: linear-gradient(135deg, #a8dadc, #457b9d); color: white; padding: 20px 30px; border-radius: 15px; margin-bottom: 30px; font-size: 1.8rem; font-weight: 600; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); }
+        .tree-container { background: #fdfdfd; border-radius: 15px; padding: 30px; margin: 20px 0; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05); border: 1px solid #e0e7eb; }
+        .tree { font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6; color: #333; white-space: pre-wrap; overflow-x: auto; }
+        .priority-1 { color: #e63946; font-weight: bold; }
+        .package { background: #a8dadc; color: #333; padding: 2px 8px; border-radius: 12px; font-size: 12px; font-weight: 500; margin: 0 3px; display: inline-block; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .method-description { font-style: italic; color: #777; margin-left: 20px; font-size: 12px; }
+        .highlight { background: #ffe6a7; padding: 2px 5px; border-radius: 3px; font-weight: bold; color: #333; }
+        .importance-marker { font-size: 0.8em; font-weight: bold; padding: 2px 6px; border-radius: 8px; margin-left: 8px; vertical-align: middle; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .importance-marker.level-5 { background-color: #fcebeb; color: #e63946; } .importance-marker.level-4 { background-color: #fff3e0; color: #f4a261; } .importance-marker.level-3 { background-color: #e0f2f7; color: #457b9d; } .importance-marker.level-2 { background-color: #f1eff8; color: #8d86c9; } .importance-marker.level-1 { background-color: #e6f5e6; color: #6a994e; }
+        .back-link { display: inline-block; text-align: center; margin-top: 30px; padding: 10px 20px; text-decoration: none; color: white; font-weight: bold; background: #457b9d; border-radius: 10px; transition: background 0.3s ease; }
+        .back-link:hover { background: #e63946; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">Step 1: Data Preprocessing & Cleaning</div>
+        <div class="tree-container">
+            <div class="tree">
+<span class="priority-1">1. DATA PREPROCESSING & CLEANING (CRITICAL - First Priority)</span> <span class="importance-marker level-5">(5/5)</span>
+│   ├── <span class="highlight">1.1 Data Cleaning</span> <span class="importance-marker level-5">(5/5)</span>
+│   │   ├── Handling Inconsistent Data <span class="importance-marker level-5">(5/5)</span>
+│   │   │   ├── <span class="package">pandas.DataFrame.replace()</span>
+│   │   │   ├── <span class="package">regex</span>
+│   │   │   └── <span class="method-description">✓ Correcting typos, standardizing formats</span>
+│   │   ├── Removing Duplicates <span class="importance-marker level-5">(5/5)</span>
+│   │   │   ├── <span class="package">pandas.DataFrame.drop_duplicates()</span>
+│   │   │   └── <span class="method-description">✓ Ensures unique records</span>
+│   │   └── Handling Noise <span class="importance-marker level-4">(4/5)</span>
+│   │       ├── Binning <span class="importance-marker level-4">(4/5)</span>
+│   │       ├── Regression <span class="importance-marker level-3">(3/5)</span>
+│   │       └── Clustering <span class="importance-marker level-3">(3/5)</span>
+│   │
+│   ├── <span class="highlight">1.2 Imputation Strategies (Handling Missing Values)</span> <span class="importance-marker level-5">(5/5)</span>
+│   │   ├── Simple Imputation <span class="importance-marker level-5">(5/5)</span>
+│   │   │   ├── Mean/Median/Mode Imputation <span class="importance-marker level-5">(5/5)</span>
+│   │   │   │   ├── <span class="package">sklearn.impute.SimpleImputer</span>
+│   │   │   │   ├── <span class="package">pandas.DataFrame.fillna()</span>
+│   │   │   │   └── <span class="method-description">✓ Fast, simple baseline for numerical/categorical data</span>
+│   │   │   ├── Forward/Backward Fill <span class="importance-marker level-4">(4/5)</span>
+│   │   │   │   ├── <span class="package">pandas.DataFrame.fillna(method='ffill')</span>
+│   │   │   │   ├── <span class="package">pandas.DataFrame.fillna(method='bfill')</span>
+│   │   │   │   └── <span class="method-description">✓ Ideal for time-series data with temporal dependencies</span>
+│   │   │   └── Constant Value Imputation <span class="importance-marker level-4">(4/5)</span>
+│   │   │       ├── <span class="package">sklearn.impute.SimpleImputer(strategy='constant')</span>
+│   │   │       └── <span class="method-description">✓ Domain-specific constants (e.g., 0, 'Unknown', 'Missing')</span>
+│   │   ├── Advanced Imputation <span class="importance-marker level-4">(4/5)</span>
+│   │   │   ├── Iterative Imputation (MICE) <span class="importance-marker level-4">(4/5)</span>
+│   │   │   │   ├── <span class="package">sklearn.impute.IterativeImputer</span>
+│   │   │   │   ├── <span class="package">fancyimpute.IterativeImputer</span>
+│   │   │   │   └── <span class="method-description">✓ Robust multivariate imputation using chained equations</span>
+│   │   │   ├── K-Nearest Neighbors Imputation <span class="importance-marker level-4">(4/5)</span>
+│   │   │   │   ├── <span class="package">sklearn.impute.KNNImputer</span>
+│   │   │   │   └── <span class="method-description">✓ Preserves feature relationships, good for mixed data types</span>
+│   │   │   └── Matrix Factorization <span class="importance-marker level-3">(3/5)</span>
+│   │   │       ├── <span class="package">fancyimpute.MatrixFactorization</span>
+│   │   │       ├── <span class="package">fancyimpute.NuclearNormMinimization</span>
+│   │   │       └── <span class="method-description">✓ Advanced technique for high-dimensional sparse data</span>
+│   │   └── Domain-Specific Imputation <span class="importance-marker level-3">(3/5)</span>
+│   │       ├── Time Series Interpolation <span class="importance-marker level-3">(3/5)</span>
+│   │       │   ├── <span class="package">pandas.DataFrame.interpolate()</span>
+│   │       │   ├── <span class="package">scipy.interpolate.interp1d</span>
+│   │       │   └── <span class="method-description">✓ Linear, polynomial, spline interpolation for time series</span>
+│   │       └── Seasonal Decomposition <span class="importance-marker level-3">(3/5)</span>
+│   │           ├── <span class="package">statsmodels.tsa.seasonal.seasonal_decompose</span>
+│   │           └── <span class="method-description">✓ Handles seasonal patterns in time series data</span>
+│   │
+│   ├── <span class="highlight">1.3 Outlier Detection & Treatment</span> <span class="importance-marker level-4">(4/5)</span>
+│   │   ├── Statistical Methods <span class="importance-marker level-4">(4/5)</span>
+│   │   │   ├── Z-Score Method <span class="importance-marker level-4">(4/5)</span>
+│   │   │   │   ├── <span class="package">scipy.stats.zscore</span>
+│   │   │   │   └── <span class="method-description">✓ Identifies outliers beyond 3 standard deviations</span>
+│   │   │   ├── Interquartile Range (IQR) <span class="importance-marker level-4">(4/5)</span>
+│   │   │   │   ├── <span class="package">pandas.DataFrame.quantile()</span>
+│   │   │   │   └── <span class="method-description">✓ Robust to extreme values, uses Q1 and Q3</span>
+│   │   │   └── Modified Z-Score <span class="importance-marker level-3">(3/5)</span>
+│   │   │       ├── <span class="package">scipy.stats.median_abs_deviation</span>
+│   │   │       └── <span class="method-description">✓ Uses median instead of mean, more robust</span>
+│   │   └── Machine Learning Methods <span class="importance-marker level-3">(3/5)</span>
+│   │       ├── Isolation Forest <span class="importance-marker level-3">(3/5)</span>
+│   │       │   ├── <span class="package">sklearn.ensemble.IsolationForest</span>
+│   │       │   └── <span class="method-description">✓ Unsupervised anomaly detection, good for high dimensions</span>
+│   │       ├── Local Outlier Factor (LOF) <span class="importance-marker level-3">(3/5)</span>
+│   │       │   ├── <span class="package">sklearn.neighbors.LocalOutlierFactor</span>
+│   │       │   └── <span class="method-description">✓ Density-based outlier detection</span>
+│   │       └── One-Class SVM <span class="importance-marker level-2">(2/5)</span>
+│   │           ├── <span class="package">sklearn.svm.OneClassSVM</span>
+│   │           └── <span class="method-description">✓ Kernel-based outlier detection</span>
+│   │
+│   ├── <span class="highlight">1.4 Data Integration</span> <span class="importance-marker level-3">(3/5)</span>
+│   │   ├── Schema Integration <span class="importance-marker level-3">(3/5)</span>
+│   │   │   ├── <span class="package">pandas.DataFrame.merge()</span>
+│   │   │   └── <span class="method-description">✓ Combining data from heterogeneous sources</span>
+│   │   └── Entity Resolution <span class="importance-marker level-2">(2/5)</span>
+│   │       ├── <span class="package">recordlinkage</span>
+│   │       └── <span class="method-description">✓ Identifying and linking records that refer to the same entity</span>
+│   │
+│   └── <span class="highlight">1.5 Data Transformation</span> <span class="importance-marker level-4">(4/5)</span>
+│       ├── Aggregation <span class="importance-marker level-4">(4/5)</span>
+│       │   ├── <span class="package">pandas.DataFrame.groupby().agg()</span>
+│       │   └── <span class="method-description">✓ Summarizing data (e.g., sum, mean, count)</span>
+│       ├── Generalization <span class="importance-marker level-3">(3/5)</span>
+│       │   ├── <span class="package">Custom logic</span>
+│       │   └── <span class="method-description">✓ Replacing low-level data with high-level concepts (e.g., age ranges)</span>
+│       └── Normalization (Data Warehousing Context) <span class="importance-marker level-3">(3/5)</span>
+│           ├── <span class="package">SQL techniques</span>
+│           └── <span class="method-description">✓ Reducing data redundancy and improving data integrity</span>
+            </div>
+        </div>
+        <a href="../data_pipeline_overview.html" class="back-link">← Back to Main Pipeline</a>
+    </div>
+</body>
+</html>
