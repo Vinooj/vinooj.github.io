@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Learning Pipeline - A Modern Approach</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Fira+Code&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #ffffff;
+            padding: 40px 20px;
+            line-height: 1.3;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            color: blue;
+            font-size: 2.8rem;
+            font-weight: 200;
+        }
+        
+        .header p {
+            font-size: 1.3rem;
+            color: #6a7f8e;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .pipeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .phase-card {
+            background: #fdfdfd;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e0e7eb;
+            border-left-width: 5px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
+
+        .phase-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+        
+        .phase-card a {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            padding: 25px;
+        }
+        
+        .phase-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .phase-card ul {
+            padding-left: 20px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #555;
+            flex-grow: 1;
+        }
+        
+
+        /* Detail Section Styles */
+        .detail-section-header {
+            color: black;
+            padding: 15px 25px;
+            margin: 60px 0 15px 0;
+            font-size: 1.4rem;
+        }
+
+        .tree-container {
+            background: #fdfdfd;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e0e7eb;
+        }
+
+        .tree {
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #333;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+
+        .priority-1 { color: #e63946; font-weight: bold; }
+        .priority-2 { color: #f4a261; font-weight: bold; }
+        .priority-3 { color: #457b9d; font-weight: bold; }
+        
+        .package {
+            background: #a8dadc;
+            color: #333;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+            margin: 0 3px;
+            display: inline-block;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .method-description {
+            font-style: italic;
+            color: #777;
+            margin-left: 20px;
+            font-size: 12px;
+        }
+
+        .highlight {
+            background: #ffe6a7;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧠 The Deep Learning Pipeline</h1>
+            <p>Click any card below to navigate to its details.</p>
+        </div>
+
+        <div class="pipeline">
+            <div class="phase-card phase-1">
+                <a href="#step1">
+                    <h3>1. Data Preparation & Augmentation</h3>
+                    <ul>
+                        <li>Build efficient input pipelines</li>
+                        <li>Process unstructured data</li>
+                        <li>Apply data augmentation</li>
+                    </ul>
+                </a>
+            </div>
+            <div class="phase-card phase-2">
+                <a href="#step2">
+                    <h3>2. Model Architecture & Design</h3>
+                    <ul>
+                        <li>Choose appropriate layers</li>
+                        <li>Select activation functions</li>
+                        <li>Utilize transfer learning</li>
+                    </ul>
+                </a>
+            </div>
+            <div class="phase-card phase-3">
+                <a href="#step3">
+                    <h3>3. Model Compilation</h3>
+                    <ul>
+                        <li>Select an optimizer (Adam, SGD)</li>
+                        <li>Define a loss function</li>
+                        <li>Choose evaluation metrics</li>
+                    </ul>
+                </a>
+            </div>
+            <div class="phase-card phase-4">
+                <a href="#step4">
+                    <h3>4. Model Training</h3>
+                    <ul>
+                        <li>Run the training loop</li>
+                        <li>Manage batches and epochs</li>
+                        <li>Use callbacks</li>
+                    </ul>
+                </a>
+            </div>
+            <div class="phase-card phase-5">
+                <a href="#step5">
+                    <h3>5. Evaluation & Analysis</h3>
+                    <ul>
+                        <li>Evaluate on test data</li>
+                        <li>Analyze predictions and errors</li>
+                        <li>Visualize with TensorBoard</li>
+                    </ul>
+                </a>
+            </div>
+            <div class="phase-card phase-6">
+                <a href="#step6">
+                    <h3>6. Fine-Tuning & Transfer Learning</h3>
+                    <ul>
+                        <li>Freeze layers of pre-trained models</li>
+                        <li>Implement learning rate schedules</li>
+                        <li>Adapt general models</li>
+                    </ul>
+                </a>
+            </div>
+            <div class="phase-card phase-7">
+                <a href="#step7">
+                    <h3>7. Inference & Deployment</h3>
+                    <ul>
+                        <li>Save the final model</li>
+                        <li>Optimize for production</li>
+                        <li>Export to a serving format</li>
+                    </ul>
+                </a>
+            </div>
+             <div class="phase-card phase-8">
+                <a href="ml_pipeline_overview.html">
+                    <h3>⏪ Back to Classical ML</h3>
+                    <ul>
+                        <li>Return to the classical machine learning pipeline for structured data.</li>
+                    </ul>
+                </a>
+            </div>
+        </div>
+
+        <div class="detail-section-header" id="step1">
+            🌳 Step 1: Data Preparation & Augmentation
+        </div>
+        <div class="tree-container">
+            <div class="tree">
+<span class="priority-1">1. DATA PREPARATION & AUGMENTATION</span>
+│   ├── <span class="highlight">Data Loading & Pipelining</span>
+│   │   ├── <span class="package">tf.data.Dataset</span> <span class="method-description">✓ Creating efficient, high-performance input pipelines in TensorFlow</span>
+│   │   ├── <span class="package">torch.utils.data.DataLoader</span> <span class="method-description">✓ The standard data loader for batching and sampling in PyTorch</span>
+│   │   └── <span class="package">Hugging Face datasets</span> <span class="method-description">✓ Library for easy access and processing of huge datasets</span>
+│   ├── <span class="highlight">Image Data Augmentation</span>
+│   │   ├── <span class="package">tf.keras.layers.RandomFlip</span> <span class="method-description">✓ Applies random horizontal/vertical flips</span>
+│   │   ├── <span class="package">tf.keras.layers.RandomRotation</span> <span class="method-description">✓ Applies random rotation to images</span>
+│   │   └── <span class="package">Albumentations</span> <span class="method-description">✓ A fast and flexible library for a wide variety of image augmentations</span>
+│   └── <span class="highlight">Text Data Processing</span>
+│       ├── Tokenization <span class="package">Hugging Face Tokenizers</span> <span class="method-description">✓ State-of-the-art tokenization (BPE, WordPiece) for NLP models</span>
+│       └── Vectorization <span class="package">tf.keras.layers.TextVectorization</span> <span class="method-description">✓ Converts text tokens into numerical integer vectors</span>
+            </div>
+        </div>
+
+        <div class="detail-section-header" id="step2">
+            🌳 Step 2: Model Architecture & Design
+        </div>
+        <div class="tree-container">
+            <div class="tree">
+<span class="priority-2">2. MODEL ARCHITECTURE & DESIGN</span>
+│   ├── <span class="highlight">Foundational Layers</span>
+│   │   ├── <span class="package">tf.keras.layers.Dense</span> <span class="method-description">✓ Standard fully connected layer</span>
+│   │   ├── <span class="package">tf.keras.layers.Conv2D</span> <span class="method-description">✓ Core layer for Convolutional Neural Networks (CNNs) for image processing</span>
+│   │   ├── <span class="package">tf.keras.layers.LSTM / GRU</span> <span class="method-description">✓ Key layers for Recurrent Neural Networks (RNNs) for sequential data</span>
+│   │   └── <span class="package">tf.keras.layers.MultiHeadAttention</span> <span class="method-description">✓ The core mechanism behind Transformer models</span>
+│   ├── <span class="highlight">Activation Functions</span>
+│   │   ├── <span class="package">tf.nn.relu</span> <span class="method-description">✓ Most common activation for hidden layers to introduce non-linearity</span>
+│   │   ├── <span class="package">tf.nn.sigmoid</span> <span class="method-description">✓ Used for binary classification output layers to get a probability</span>
+│   │   └── <span class="package">tf.nn.softmax</span> <span class="method-description">✓ Used for multi-class classification output layers</span>
+│   └── <span class="highlight">Pre-trained Models (Transfer Learning)</span>
+│       ├── <span class="package">TensorFlow Hub</span> / <span class="package">Keras Applications</span> <span class="method-description">✓ Access to models like ResNet, MobileNet, BERT</span>
+│       └── <span class="package">Hugging Face Hub</span> <span class="method-description">✓ The central repository for thousands of pre-trained models</span>
+            </div>
+        </div>
+
+        <div class="detail-section-header" id="step3">
+            🌳 Step 3: Model Compilation
+        </div>
+        <div class="tree-container">
+             <div class="tree">
+<span class="priority-3">3. MODEL COMPILATION</span>
+│   ├── <span class="highlight">Optimizers</span>
+│   │   ├── <span class="package">tf.keras.optimizers.Adam</span> <span class="method-description">✓ Robust, adaptive learning rate optimizer; a go-to default</span>
+│   │   └── <span class="package">tf.keras.optimizers.SGD</span> <span class="method-description">✓ Stochastic Gradient Descent, often used with momentum</span>
+│   └── <span class="highlight">Loss Functions</span>
+│       ├── <span class="package">tf.keras.losses.BinaryCrossentropy</span> <span class="method-description">✓ For binary (two-class) classification problems</span>
+│       ├── <span class="package">tf.keras.losses.CategoricalCrossentropy</span> <span class="method-description">✓ For multi-class classification (when labels are one-hot encoded)</span>
+│       └── <span class="package">tf.keras.losses.MeanSquaredError</span> <span class="method-description">✓ Standard loss function for regression tasks</span>
+            </div>
+        </div>
+
+        <div class="detail-section-header" id="step4">
+            🌳 Step 4: Model Training
+        </div>
+        <div class="tree-container">
+            <div class="tree">
+<span class="priority-1">4. MODEL TRAINING</span>
+│   ├── <span class="highlight">Core Training Loop</span>
+│   │   └── <span class="package">model.fit()</span> <span class="method-description">✓ High-level Keras method to handle the entire training process over epochs and batches</span>
+│   └── <span class="highlight">Callbacks</span>
+│       ├── <span class="package">tf.keras.callbacks.ModelCheckpoint</span> <span class="method-description">✓ Automatically saving the best model during training</span>
+│       ├── <span class="package">tf.keras.callbacks.EarlyStopping</span> <span class="method-description">✓ Stopping training when a monitored metric has stopped improving</span>
+│       └── <span class="package">tf.keras.callbacks.ReduceLROnPlateau</span> <span class="method-description">✓ Reducing the learning rate when performance plateaus</span>
+            </div>
+        </div>
+
+        <div class="detail-section-header" id="step5">
+            🌳 Step 5: Evaluation & Analysis
+        </div>
+        <div class="tree-container">
+            <div class="tree">
+<span class="priority-2">5. EVALUATION & ANALYSIS</span>
+│   ├── <span class="highlight">Performance Metrics</span>
+│   │   └── <span class="package">model.evaluate()</span> <span class="method-description">✓ Calculating final loss and metrics on the unseen test dataset</span>
+│   └── <span class="highlight">Model Understanding & Explainability</span>
+│       ├── <span class="package">TensorBoard</span> <span class="method-description">✓ The standard suite for visualizing DL metrics, graphs, and profiling</span>
+│       ├── <span class="package">Netron</span> <span class="method-description">✓ A viewer for neural network, deep learning, and machine learning models</span>
+│       └── <span class="package">SHAP</span> / <span class="package">LIME</span> <span class="method-description">✓ Libraries for explaining the output of any machine learning model</span>
+            </div>
+        </div>
+
+        <div class="detail-section-header" id="step6">
+            🌳 Step 6: Fine-Tuning & Transfer Learning
+        </div>
+        <div class="tree-container">
+            <div class="tree">
+<span class="priority-3">6. FINE-TUNING & TRANSFER LEARNING</span>
+│   ├── <span class="highlight">Layer Management</span>
+│   │   └── <span class="package">layer.trainable = False</span> <span class="method-description">✓ Freezing layers of the base model to prevent their weights from being updated</span>
+│   └── <span class="highlight">Learning Rate Schedules</span>
+│       ├── <span class="package">tf.keras.optimizers.schedules.ExponentialDecay</span> <span class="method-description">✓ A common strategy to gradually lower the learning rate during training</span>
+│       └── <span class="package">Hugging Face Transformers Trainer</span> <span class="method-description">✓ Includes advanced schedulers and a robust training loop for fine-tuning</span>
+            </div>
+        </div>
+
+        <div class="detail-section-header" id="step7">
+            🌳 Step 7: Inference & Deployment
+        </div>
+        <div class="tree-container">
+            <div class="tree">
+<span class="priority-1">7. INFERENCE & DEPLOYMENT</span>
+│   ├── <span class="highlight">Model Saving & Exporting</span>
+│   │   └── <span class="package">model.save()</span> <span class="method-description">✓ Saving the complete model (architecture, weights, optimizer state) to a single file</span>
+│   └── <span class="highlight">Optimization for Production</span>
+│       ├── Quantization <span class="package">TensorFlow Lite</span> <span class="method-description">✓ Reducing model precision (e.g., float32 to int8) to decrease size and latency</span>
+│       ├── Pruning <span class="package">TensorFlow Model Optimization Toolkit</span> <span class="method-description">✓ Removing unnecessary weights from the network to make it smaller</span>
+│       └── Format Conversion <span class="package">ONNX</span> <span class="method-description">✓ Open Neural Network Exchange format for model interoperability</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
