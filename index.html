@@ -224,6 +224,80 @@
         
         .kaggle-item-link:hover { background: var(--accent-teal); color: var(--dark-navy); }
         .kaggle-section p { font-size: 0.9rem; color: var(--text-medium); margin-top: 0.4rem; }
+
+                .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjusted minmax */
+            gap: 1.5rem; /* Adjusted gap */
+        }
+
+        .resource-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 1.5rem; /* Reduced padding */
+            text-align: left;
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-8px); /* Adjusted hover transform */
+            border-color: rgba(0, 245, 200, 0.5);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* New styles for positioning icon next to heading */
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem; /* Space between icon and title */
+            margin-bottom: 1rem;
+        }
+
+        .resource-icon {
+            width: 30px; /* Reduced icon size */
+            height: 30px; /* Reduced icon size */
+            color: var(--accent-teal);
+            margin-bottom: 0; /* Removed bottom margin */
+        }
+
+        .resource-card h2 {
+            font-size: 1.25rem; /* Reduced font size */
+            color: var(--text-light);
+            font-weight: 600;
+            margin-bottom: 0; /* Removed bottom margin */
+        }
+
+        .resource-card p {
+            color: var(--text-medium);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            font-weight: 300;
+            font-size: 0.9rem; /* Reduced font size */
+        }
+
+        .resource-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem; /* Reduced padding */
+            font-size: 0.9rem; /* Reduced font size */
+            background: linear-gradient(90deg, var(--accent-teal), var(--accent-magenta));
+            color: var(--dark-navy);
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: 50;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 245, 200, 0.2);
+        }
+
+        .resource-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 245, 200, 0.3);
+        }
         
         /* Coursework Section & Table */
         .coursework-section { margin-bottom: 3rem; }
@@ -415,6 +489,57 @@
                 </table>
             </div>
         </section>
+
+        <h2 class="section-title">Useful References</h2>
+        <main class="resources-grid">
+            <div class="resource-card">
+                <div class="card-header">
+                    <div class="resource-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" role="img">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                        </svg>
+                    </div>
+                    <h2>ML Concepts Static</h2>
+                </div>
+                <p>Comprehensive static reference guide covering fundamental machine learning concepts, algorithms, and theoretical foundations.</p>
+                <a href="html/ml_concepts_static.html" class="resource-link">
+                    <span>Explore</span>
+                    <span>→</span>
+                </a>
+            </div>
+
+            <div class="resource-card">
+                <div class="card-header">
+                    <div class="resource-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" role="img">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
+                        </svg>
+                    </div>
+                    <h2>ML Yearning Decision Tree</h2>
+                </div>
+                <p>Interactive decision tree based on Andrew Ng's "Machine Learning Yearning" for systematic ML problem diagnosis and solution strategies.</p>
+                <a href="html/ml_yearning_html.html" class="resource-link">
+                    <span>Diagnose</span>
+                    <span>🔍</span>
+                </a>
+            </div>
+
+            <div class="resource-card">
+                <div class="card-header">
+                     <div class="resource-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" role="img">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                    </div>
+                    <h2>ML Pipeline</h2>
+                </div>
+                <p>End-to-end machine learning pipeline implementation guide with best practices for production-ready ML systems.</p>
+                <a href="html/ml_pipeline_overview.html" class="resource-link">
+                    <span>Build</span>
+                    <span>🔧</span>
+                </a>
+            </div>
+        </main>
 
         <footer class="footer">
             <p>Designed to structure learning and accelerate growth in data science.</p>
