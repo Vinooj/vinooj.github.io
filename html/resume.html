@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+    rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -43,17 +46,25 @@
       box-shadow: 0 4px 12px var(--shadow-color);
       overflow: hidden;
     }
-    
+
     /* Assign grid areas to each major section */
-    .sidebar-personal { grid-area: personal; }
-    .main-content     { grid-area: main; }
-    .sidebar-skills   { grid-area: skills; }
-    
+    .sidebar-personal {
+      grid-area: personal;
+    }
+
+    .main-content {
+      grid-area: main;
+    }
+
+    .sidebar-skills {
+      grid-area: skills;
+    }
+
     /* Desktop: Two-column grid layout using grid-template-areas */
     @media (min-width: 992px) {
       .container {
         display: grid;
-        grid-template-columns: 1fr 300px; 
+        grid-template-columns: 1fr 300px;
         grid-template-areas:
           "main personal"
           "main skills";
@@ -65,18 +76,18 @@
       background-color: var(--primary-color);
       color: var(--white-color);
     }
-    
+
     .sidebar-personal {
-        background-color: var(--primary-color-dark);
+      background-color: var(--primary-color-dark);
     }
 
     .sidebar-top {
-        padding: 40px 40px 30px 40px;
-        text-align: center;
+      padding: 40px 40px 30px 40px;
+      text-align: center;
     }
 
     .sidebar-bottom {
-        padding: 30px 40px 40px 40px;
+      padding: 30px 40px 40px 40px;
     }
 
     .sidebar a {
@@ -91,7 +102,7 @@
       object-fit: cover;
       display: block;
       margin: 0 auto 20px;
-      border: 5px solid rgba(255,255,255,0.2);
+      border: 5px solid rgba(255, 255, 255, 0.2);
     }
 
     .name {
@@ -116,7 +127,7 @@
       font-size: 17px;
       font-weight: 700;
       margin-bottom: 15px;
-      border-bottom: 2px solid rgba(255,255,255,0.2);
+      border-bottom: 2px solid rgba(255, 255, 255, 0.2);
       padding-bottom: 5px;
       text-transform: uppercase;
     }
@@ -152,7 +163,7 @@
     }
 
     .skill-bar {
-      background-color: rgba(255,255,255,0.2);
+      background-color: rgba(255, 255, 255, 0.2);
       border-radius: 5px;
       height: 8px;
       overflow: hidden;
@@ -170,13 +181,13 @@
     }
 
     .introduction-text {
-        font-size: 16px;
-        font-weight: 300;
-        line-height: 1.7;
-        color: var(--text-color);
-        margin-bottom: 40px;
-        padding-bottom: 25px;
-        border-bottom: 1px solid var(--border-color);
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--text-color);
+      margin-bottom: 40px;
+      padding-bottom: 25px;
+      border-bottom: 1px solid var(--border-color);
     }
 
     .main-section {
@@ -216,9 +227,9 @@
       position: relative;
       margin-bottom: 30px;
     }
-    
+
     .timeline-item:last-child {
-        margin-bottom: 0;
+      margin-bottom: 0;
     }
 
     .timeline-item::before {
@@ -233,9 +244,9 @@
       border: 2px solid var(--white-color);
       box-shadow: 0 0 0 3px var(--border-color);
     }
-    
+
     .timeline-item.compact {
-        margin-bottom: 15px;
+      margin-bottom: 15px;
     }
 
     .item-title {
@@ -249,39 +260,40 @@
       font-size: 13px;
       margin-bottom: 10px;
     }
-    
+
     .item-subtitle .date {
-        font-weight: 500;
-        color: var(--primary-color);
+      font-weight: 500;
+      color: var(--primary-color);
     }
 
     .item-content {
       font-size: 14px;
       font-weight: 300;
     }
-    
+
     .item-content ul {
-        padding-left: 20px;
-        margin-top: 10px;
+      padding-left: 20px;
+      margin-top: 10px;
     }
-    
+
     .education-course {
-        font-weight: 500;
-        color: var(--text-color);
+      font-weight: 500;
+      color: var(--text-color);
     }
+
     .education-institution {
-        color: var(--text-color-light);
+      color: var(--text-color-light);
     }
 
     /* --- Carousel Styles --- */
     .carousel-wrapper {
-        width: 100%;
-        max-width: 800px;
-        margin: 0 auto;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
     .carousel-wrapper .main-title {
-        justify-content: center;
+      justify-content: center;
     }
 
     .carousel-container {
@@ -318,7 +330,7 @@
       overflow: hidden;
       padding: 0;
     }
-    
+
     .project-card-header {
       width: 100%;
       padding: 12px 15px;
@@ -343,35 +355,36 @@
       flex-grow: 1;
       text-align: left;
     }
-    
+
     .project-winner-badge {
-        position: relative;
-        font-size: 24px;
-        color: var(--primary-color);
-        width: 1em;
-        height: 1em;
-        line-height: 1;
+      position: relative;
+      font-size: 24px;
+      color: var(--primary-color);
+      width: 1em;
+      height: 1em;
+      line-height: 1;
     }
 
     .project-winner-badge::before {
-        content: '\f559'; /* Font Awesome 6 'award' icon */
-        font-family: "Font Awesome 6 Free";
-        font-weight: 900;
-        position: absolute;
-        top: 0;
-        left: 0;
+      content: '\f559';
+      /* Font Awesome 6 'award' icon */
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      top: 0;
+      left: 0;
     }
 
     .project-winner-badge::after {
-        content: '1';
-        position: absolute;
-        top: 42%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        color: var(--white-color);
-        font-size: 0.45em;
-        font-weight: 900;
-        font-family: 'Poppins', sans-serif;
+      content: '1';
+      position: absolute;
+      top: 42%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: var(--white-color);
+      font-size: 0.45em;
+      font-weight: 900;
+      font-family: 'Poppins', sans-serif;
     }
 
     .project-card-body {
@@ -383,9 +396,9 @@
     }
 
     .project-card-description {
-        font-size: 14px;
-        color: var(--text-color);
-        margin: 0;
+      font-size: 14px;
+      color: var(--text-color);
+      margin: 0;
     }
 
     /* Mobile & Tablet: Single column layout */
@@ -394,20 +407,24 @@
         margin: 0;
         box-shadow: none;
       }
-      .main-content, .sidebar-top, .sidebar-bottom {
+
+      .main-content,
+      .sidebar-top,
+      .sidebar-bottom {
         padding: 25px;
       }
+
       .project-card {
         width: calc((100% - 20px) / 2);
       }
     }
-    
+
     @media (max-width: 767px) {
       .project-card {
         width: 100%;
       }
     }
-    
+
     .carousel-button {
       position: absolute;
       top: 50%;
@@ -427,10 +444,10 @@
       justify-content: center;
       font-size: 18px;
     }
-    
+
     .carousel-button:hover {
-        background-color: #f8f8f8;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      background-color: #f8f8f8;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
 
     .carousel-button.hidden {
@@ -445,31 +462,32 @@
     .carousel-button.next {
       right: 0;
     }
-    
+
     .footer {
-        text-align: center;
-        padding: 20px;
-        background-color: #f0f0f0;
-        color: #777;
-        font-size: 13px;
-        margin-top: 40px;
-        border-top: 1px solid var(--border-color);
+      text-align: center;
+      padding: 20px;
+      background-color: #f0f0f0;
+      color: #777;
+      font-size: 13px;
+      margin-top: 40px;
+      border-top: 1px solid var(--border-color);
     }
-    
+
     .footer a {
-        color: var(--primary-color);
-        text-decoration: none;
+      color: var(--primary-color);
+      text-decoration: none;
     }
   </style>
 </head>
+
 <body>
 
   <div class="container" id="resume-container">
     <div style="text-align: center; padding: 50px; font-size: 20px;">Loading Resume Data...</div>
   </div>
-  
+
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       // Data for the resume is stored in YAML format for easy editing.
       const yamlText = `
 personal:
@@ -557,14 +575,14 @@ education:
     details: ""
 
 continuing_education:
+  - course: "3 Month AI Agents Bootcamp"
+    institution: "SupportVectors.ai"
   - course: "Supervised Machine Learning: Regression and Classification"
     institution: "Stanford Online (Coursera) - by Andrew Ng"
   - course: "Advanced Learning Algorithms"
     institution: "Stanford Online (Coursera) - by Andrew Ng"
   - course: "Unsupervised Learning, Recommenders, Reinforcement Learning"
     institution: "Stanford Online (Coursera) - by Andrew Ng"
-  - course: "Statistical Learning with Python (Actively taking)"
-    institution: "Stanford Online - by Trevor Hastie & Robert Tibshirani"
 
 projects:
   - name: "Care Guide Chat Efficiency"
@@ -590,7 +608,7 @@ projects:
 
     function renderResume(data) {
       const container = document.getElementById('resume-container');
-      
+
       const personalSidebarHTML = `
         <aside class="sidebar sidebar-personal">
           <div class="sidebar-top">
@@ -705,11 +723,11 @@ projects:
                 <div class="carousel-track-container">
                     <div class="carousel-track">
                         ${(data.projects || []).map(project => {
-                            const winnerBadge = project.winner 
-                                ? '<span class="project-winner-badge"></span>' 
-                                : '';
+        const winnerBadge = project.winner
+          ? '<span class="project-winner-badge"></span>'
+          : '';
 
-                            return `
+        return `
                                 <div class="project-card">
                                     <div class="project-card-header">
                                         <h4 class="project-card-title">${project.name}</h4>
@@ -720,7 +738,7 @@ projects:
                                     </div>
                                 </div>
                             `;
-                        }).join('')}
+      }).join('')}
                     </div>
                 </div>
                 <button class="carousel-button prev"><i class="fa-solid fa-chevron-left"></i></button>
@@ -736,7 +754,7 @@ projects:
 
       // Render in the new responsive order
       container.innerHTML = personalSidebarHTML + mainContentHTML + skillsSidebarHTML;
-      
+
       setupCarousel();
     }
 
@@ -748,51 +766,51 @@ projects:
       const slides = Array.from(track.children);
       const nextButton = carouselContainer.querySelector('.carousel-button.next');
       const prevButton = carouselContainer.querySelector('.carousel-button.prev');
-      
+
       if (slides.length === 0) return;
 
       let currentIndex = 0;
 
       const getVisibleSlides = () => {
-          if (window.innerWidth <= 767) return 1;
-          if (window.innerWidth <= 991) return 2;
-          return 3;
+        if (window.innerWidth <= 767) return 1;
+        if (window.innerWidth <= 991) return 2;
+        return 3;
       };
 
       const updateCarousel = () => {
-          const visibleSlides = getVisibleSlides();
-          const slideWidth = slides.length > 0 ? slides[0].getBoundingClientRect().width : 0;
-          const gap = 20;
-          const offset = currentIndex * (slideWidth + gap);
-          track.style.transform = `translateX(-${offset}px)`;
+        const visibleSlides = getVisibleSlides();
+        const slideWidth = slides.length > 0 ? slides[0].getBoundingClientRect().width : 0;
+        const gap = 20;
+        const offset = currentIndex * (slideWidth + gap);
+        track.style.transform = `translateX(-${offset}px)`;
 
-          if (slides.length > visibleSlides) {
-              prevButton.classList.toggle('hidden', currentIndex === 0);
-              nextButton.classList.toggle('hidden', currentIndex >= slides.length - visibleSlides);
-          } else {
-              prevButton.classList.add('hidden');
-              nextButton.classList.add('hidden');
-          }
+        if (slides.length > visibleSlides) {
+          prevButton.classList.toggle('hidden', currentIndex === 0);
+          nextButton.classList.toggle('hidden', currentIndex >= slides.length - visibleSlides);
+        } else {
+          prevButton.classList.add('hidden');
+          nextButton.classList.add('hidden');
+        }
       };
 
       nextButton.addEventListener('click', () => {
-          const visibleSlides = getVisibleSlides();
-          if (currentIndex < slides.length - visibleSlides) {
-              currentIndex++;
-              updateCarousel();
-          }
+        const visibleSlides = getVisibleSlides();
+        if (currentIndex < slides.length - visibleSlides) {
+          currentIndex++;
+          updateCarousel();
+        }
       });
 
       prevButton.addEventListener('click', () => {
-          if (currentIndex > 0) {
-              currentIndex--;
-              updateCarousel();
-          }
-      });
-      
-      window.addEventListener('resize', () => {
-          currentIndex = 0;
+        if (currentIndex > 0) {
+          currentIndex--;
           updateCarousel();
+        }
+      });
+
+      window.addEventListener('resize', () => {
+        currentIndex = 0;
+        updateCarousel();
       });
 
       updateCarousel();
@@ -800,4 +818,5 @@ projects:
 
   </script>
 </body>
+
 </html>
